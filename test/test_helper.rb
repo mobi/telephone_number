@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'telephone_number'
-require 'pry'
+require "pry"
+require "telephone_number"
+require "minitest/autorun"
+require "minitest/focus"
 
-require 'minitest/autorun'
