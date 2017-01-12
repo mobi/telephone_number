@@ -5,5 +5,11 @@
 /coverage/
 /doc/
 /pkg/
-/spec/reports/
 /tmp/
+/tags
+/telephone_number_data_file_override.xml
+/telephone_number_data_override_file.dat
+/scratchpad.rb
+.ruby-version
+.ruby-gemset
+.rvmrc
