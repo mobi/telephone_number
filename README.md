@@ -1,8 +1,6 @@
-# TelephoneNumber
+# What is it?
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/telephone_number`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+TelephoneNumber is global phone number validation gem based on Google's [libphonenumber](https://www.google.com) library. We're currently providing parsing and validation functionality and are actively working on formatting as well as providing extended data. 
 
 ## Installation
 
@@ -59,10 +57,16 @@ In this instance, `/path/to/file` represents an xml file that has your custom da
 You can set the override file with:
     
     TelephoneNumber.override_file = "/path/to_file.dat"
+    
+## Todo
+
+- Build custom validator to integrate with Rails
+- Build formatting functionality
+- Build extended data functionality(short codes, carrier data, etc.)
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
