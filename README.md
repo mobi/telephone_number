@@ -22,7 +22,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TelephoneNumber requires a country when parsing and validating phone numbers.
+
+**To validate a phone number:**
+
+    TelephoneNumber.valid?("(555) 555-5555", "US") ==> false
+    
+You can pass an optional array of keys to check the validity against. 
+
+    TelephoneNumber.valid?("(555) 555-5555", "US", [:mobile, :fixed_line]) ==> false
+
+**To parse a phone number:**
+
+    TelephoneNumber.parse("(317) 508-3348", "US") ==>  
+        
+        #<TelephoneNumber::Number:0x007fe3bc146cf0 
+          @country="US", 
+          @e164_number="13175083348",
+          @national_number="3175083348",
+          @original_number="3175083348">
+          
+**To fetch valid types:**
+
+    TelephoneNumber.parse("(317) 508-3348", "US").valid_types ==>  ["mobile", "fixed_line"]
+    
+## Configuration
+
+In the event that you need to override the data that Google is providing, you can do so by setting an override file. This file is expected to be in the same format as Google's as well as serialized using Marshal. 
+
+To generate a serialized override file: 
+
+    TelephoneNumber.generate_override_file("/path/to/file")
+    
+In this instance, `/path/to/file` represents an xml file that has your custom data in the same structure that Google's data is in.
+
+You can set the override file with:
+    
+    TelephoneNumber.override_file = "/path/to_file.dat"
 
 ## Development
 
@@ -32,7 +68,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/telephone_number. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mobi/telephone_number. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
