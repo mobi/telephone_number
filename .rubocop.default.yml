@@ -1,3 +1,5 @@
+# These are all the cops that are enabled in the default configuration.
+
 Style/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   StyleGuide: '#indent-public-private-protected'
@@ -964,6 +966,8 @@ Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: true
 
+#################### Metrics ###############################
+
 Metrics/AbcSize:
   Description: >-
                  A calculated magnitude based on number of assignments,
@@ -1014,6 +1018,9 @@ Metrics/PerceivedComplexity:
                  A complexity metric geared towards measuring complexity for a
                  human reader.
   Enabled: true
+
+#################### Lint ##################################
+### Warnings
 
 Lint/AmbiguousOperator:
   Description: >-
@@ -1272,6 +1279,7 @@ Lint/UselessAccessModifier:
   Description: 'Checks for useless access modifiers.'
   Enabled: true
   ContextCreatingMethods: []
+  MethodCreatingMethods: []
 
 Lint/UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
@@ -1293,6 +1301,8 @@ Lint/UselessSetterCall:
 Lint/Void:
   Description: 'Possible use of operator/literal/variable in void context.'
   Enabled: true
+
+#################### Performance ###########################
 
 Performance/Casecmp:
   Description: >-
@@ -1400,7 +1410,9 @@ Performance/RedundantSortBy:
   Enabled: true
 
 Performance/RegexpMatch:
-  Description: 'Use `match?` instead of `Regexp#match`, `String#match`, `Symbol#match`, `Regexp#===` or `=~` when `MatchData` is not used.'
+  Description: >-
+                  Use `match?` instead of `Regexp#match`, `String#match`, `Symbol#match`,
+                  `Regexp#===`, or `=~` when `MatchData` is not used.
   Enabled: true
 
 Performance/ReverseEach:
@@ -1446,6 +1458,8 @@ Performance/StringReplacement:
 Performance/TimesMap:
   Description: 'Checks for .times.map calls.'
   Enabled: true
+
+#################### Rails #################################
 
 Rails/ActionFilter:
   Description: 'Enforces consistent use of action filter methods.'
@@ -1569,6 +1583,8 @@ Rails/Validation:
   Description: 'Use validates :attribute, hash of validations.'
   Enabled: true
 
+#################### Security ##############################
+
 Security/Eval:
   Description: 'The use of eval represents a serious security risk.'
   Enabled: true
@@ -1596,6 +1612,8 @@ Security/YAMLLoad:
                  security issues. See reference for more information.
   Reference: 'https://ruby-doc.org/stdlib-2.3.3/libdoc/yaml/rdoc/YAML.html#module-YAML-label-Security'
   Enabled: true
+
+#################### Bundler ###############################
 
 Bundler/DuplicatedGem:
   Description: 'Checks for duplicate gem entries in Gemfile.'
