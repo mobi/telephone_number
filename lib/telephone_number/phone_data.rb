@@ -2,6 +2,7 @@ module TelephoneNumber
   module PhoneData
     VALIDATIONS = :validations.freeze
     FORMATS = :formats.freeze
+    PATTERN = :pattern
     GENERAL = :general_desc.freeze
     PREMIUM_RATE = :premium_rate.freeze
     TOLL_FREE = :toll_free.freeze
@@ -20,6 +21,11 @@ module TelephoneNumber
     COUNTRY_CODE = :country_code.freeze
     LEADING_DIGITS = :leading_digits.freeze
     INTERNATIONAL_PREFIX = :international_prefix.freeze
+    NATIONAL_PREFIX_FORMATTING_RULE = :national_prefix_formatting_rule.freeze
+    NATIONAL_PREFIX_FOR_PARSING = :national_prefix_for_parsing.freeze
+    MAIN_COUNTRY_FOR_CODE = :main_country_for_code.freeze
+
+    MOBILE_TOKEN_COUNTRIES = { AR: '9' }.freeze
 
     def self.phone_data
       @@phone_data ||= load_data

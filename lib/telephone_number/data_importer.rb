@@ -30,8 +30,18 @@ module TelephoneNumber
     def load_formats(country_data, territory)
       country_data[TelephoneNumber::PhoneData::FORMATS] = territory.css("availableFormats numberFormat").map do |format|
         format_hash = {}.tap do |fhash|
-          format.attributes.values.each { |attr| fhash[attr.name.to_sym] = attr.value.delete("\n ") }
-          format.elements.each { |child| fhash[child.name.to_sym] = child.text.delete("\n ") }
+          format.attributes.values.each do |attr|
+            key = underscore(attr.name).to_sym
+            fhash[key] = if key == TelephoneNumber::PhoneData::NATIONAL_PREFIX_FORMATTING_RULE
+                            attr.value
+                          else
+                            attr.value.delete("\n ")
+                          end
+          end
+          format.elements.each do |child|
+            key = underscore(child.name).to_sym
+            fhash[key] = key == :format ? child.text : child.text.delete("\n ")
+          end
         end
       end
     end
@@ -48,7 +58,12 @@ module TelephoneNumber
 
     def load_base_attributes(country_data, territory)
       territory.attributes.each do |key, value_object|
-        country_data[underscore(key).to_sym] = value_object.value
+        underscored_key = underscore(key).to_sym
+        country_data[underscored_key] = if  underscored_key == TelephoneNumber::PhoneData::NATIONAL_PREFIX_FOR_PARSING
+                                          value_object.value.delete("\n ")
+                                        else
+                                          value_object.value
+                                        end
       end
     end
 
