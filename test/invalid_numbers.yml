@@ -1,0 +1,21 @@
+:US:
+  '1':
+    :e164_formatted: "+11305555555"
+    :national_formatted:  "11305555555"
+    :international_formatted: "11305555555"
+:GB:
+  '1':
+    :e164_formatted: "+44987654321654"
+    :national_formatted:  "44987654321654"
+    :international_formatted: "44987654321654"
+  '2':
+    :e164_formatted: "+440844415679032"
+    :national_formatted:  "440844415679032"
+    :international_formatted: "440844415679032"
+:NOTREAL:
+  '1':
+    :e164_formatted: "1234567890"
+    :national_formatted:  "1234567890"
+    :international_formatted: "1234567890"
+
+

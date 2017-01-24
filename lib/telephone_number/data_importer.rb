@@ -30,8 +30,11 @@ module TelephoneNumber
     def load_formats(country_data, territory)
       country_data[TelephoneNumber::PhoneData::FORMATS] = territory.css("availableFormats numberFormat").map do |format|
         format_hash = {}.tap do |fhash|
-          format.attributes.values.each { |attr| fhash[attr.name.to_sym] = attr.value.delete("\n ") }
-          format.elements.each { |child| fhash[child.name.to_sym] = child.text.delete("\n ") }
+          format.attributes.values.each { |attr| fhash[underscore(attr.name).to_sym] = attr.value.delete("\n ") }
+          format.elements.each do |child|
+            key = underscore(child.name).to_sym
+            fhash[key] = key == :format ? child.text : child.text.delete("\n ")
+          end
         end
       end
     end
