@@ -1,7 +1,6 @@
 module TelephoneNumber
   module Parser
-    KEYS_TO_SKIP = [TelephoneNumber::PhoneData::GENERAL,
-                    TelephoneNumber::PhoneData::AREA_CODE_OPTIONAL]
+    KEYS_TO_SKIP = [PhoneData::GENERAL, PhoneData::AREA_CODE_OPTIONAL]
 
     def sanitize(input_number)
       return input_number.gsub(/[^0-9]/, "")
@@ -11,10 +10,10 @@ module TelephoneNumber
     # if array is empty, we can assume that the number is invalid
     def validate
       return [] unless country_data
-      applicable_keys = country_data[TelephoneNumber::PhoneData::VALIDATIONS].reject{ |key, _value| KEYS_TO_SKIP.include?(key) }
+      applicable_keys = country_data[PhoneData::VALIDATIONS].reject{ |key, _value| KEYS_TO_SKIP.include?(key) }
       applicable_keys.map do |phone_type, validations|
-        full = "^(#{validations[TelephoneNumber::PhoneData::VALID_PATTERN]})$"
-        phone_type if normalized_number =~ Regexp.new(full)
+        full = "^(#{validations[PhoneData::VALID_PATTERN]})$"
+        phone_type.to_sym if normalized_number =~ Regexp.new(full)
       end.compact
     end
 
@@ -22,15 +21,13 @@ module TelephoneNumber
 
     def build_normalized_number
       return original_number unless country_data
-      country_code = country_data[TelephoneNumber::PhoneData::COUNTRY_CODE]
+      country_code = country_data[PhoneData::COUNTRY_CODE]
 
       number_with_correct_prefix = parse_prefix
 
       reg_string  = "^(#{country_code})?"
-      reg_string << "(#{country_data[TelephoneNumber::PhoneData::NATIONAL_PREFIX]})?"
-      reg_string << "(#{country_data[TelephoneNumber::PhoneData::VALIDATIONS]\
-                        [TelephoneNumber::PhoneData::GENERAL]\
-                        [TelephoneNumber::PhoneData::VALID_PATTERN]})$"
+      reg_string << "(#{country_data[PhoneData::NATIONAL_PREFIX]})?"
+      reg_string << "(#{country_data[PhoneData::VALIDATIONS][PhoneData::GENERAL][PhoneData::VALID_PATTERN]})$"
 
       match_result = number_with_correct_prefix.match(Regexp.new(reg_string))
       return original_number unless match_result
@@ -50,15 +47,15 @@ module TelephoneNumber
       if country_data[:national_prefix_transform_rule]
         transform_national_prefix(duped, match_object)
       else
-        duped.sub(match_object[0], '')
+        duped.sub!(match_object[0], '')
       end
     end
 
     def transform_national_prefix(duped, match_object)
-      if TelephoneNumber::PhoneData::MOBILE_TOKEN_COUNTRIES.include?(country) && match_object.captures.any?
-        sprintf(build_format_string, duped.sub(match_object[0], match_object[1]))
+      if PhoneData::MOBILE_TOKEN_COUNTRIES.include?(country) && match_object.captures.any?
+        sprintf(build_format_string, duped.sub!(match_object[0], match_object[1]))
       elsif match_object.captures.none?
-        duped.sub(match_object[0], '')
+        duped.sub!(match_object[0], '')
       else
         sprintf(build_format_string, *match_object.captures)
       end
