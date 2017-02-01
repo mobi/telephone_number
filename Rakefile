@@ -16,4 +16,10 @@ namespace :data do
       TelephoneNumber::DataImporter.new(File.expand_path("data/telephone_number_data_file.xml")).import!
     end
   end
+
+  namespace :test do
+    task :import  do
+      TelephoneNumber::TestDataGenerator.import!
+    end
+  end
 end
