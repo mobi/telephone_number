@@ -18,6 +18,28 @@ module TelephoneNumber
       end
     end
 
+    def test_valid_formatted_international_number_for_countries
+      @valid_numbers.each do |country, number_object|
+        number_object.values.each do |number_data|
+          number_data.values.each do |number|
+            telephone_number = TelephoneNumber.parse(number, country)
+            assert_equal number_data[:international_formatted], telephone_number.international_number
+          end
+        end
+      end
+    end
+
+    def test_valid_formatted_e164_numbers_for_countries
+      @valid_numbers.each do |country, number_object|
+        number_object.values.each do |number_data|
+          number_data.values.each do |number|
+            telephone_number = TelephoneNumber.parse(number, country)
+            assert_equal number_data[:e164_formatted], telephone_number.e164_number
+          end
+        end
+      end
+    end
+
     def test_invalid_formatted_national_number_for_countries
       @invalid_numbers.each do |country, number_object|
         number_object.values.each do |number_data|

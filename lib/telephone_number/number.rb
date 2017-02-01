@@ -10,7 +10,7 @@ module TelephoneNumber
 
       @original_number = sanitize(number).freeze
       @country = country.upcase.to_sym
-      @country_data = TelephoneNumber::PhoneData.phone_data[@country]
+      @country_data = PhoneData.phone_data[@country]
 
       # normalized_number is basically a "best effort" at national number without
       # any formatting. This is what we will use to derive formats, validations and
@@ -31,6 +31,22 @@ module TelephoneNumber
         @formatted_national_number ||= build_national_number
       else
         @unformatted_national_number ||= build_national_number(formatted: false)
+      end
+    end
+
+    def e164_number(formatted: true)
+      if formatted
+        @formatted_e164_number ||= build_e164_number
+      else
+        @e164_number ||= build_e164_number(formatted: false)
+      end
+    end
+
+    def international_number(formatted: true)
+      if formatted
+        @formatted_international_number ||= build_international_number
+      else
+        @international_number ||= build_international_number(formatted: false)
       end
     end
 
