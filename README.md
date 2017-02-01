@@ -1,6 +1,8 @@
+[![Code Climate](https://codeclimate.com/github/mobi/telephone_number/badges/gpa.svg)](https://codeclimate.com/github/mobi/telephone_number)
+
 # What is it?
 
-TelephoneNumber is global phone number validation gem based on Google's [libphonenumber](https://www.google.com) library. We're currently providing parsing and validation functionality and are actively working on formatting as well as providing extended data. 
+TelephoneNumber is global phone number validation gem based on Google's [libphonenumber](https://github.com/googlei18n/libphonenumber) library. We're currently providing parsing and validation functionality and are actively working on formatting as well as providing extended data.
 
 ## Installation
 
@@ -25,39 +27,44 @@ TelephoneNumber requires a country when parsing and validating phone numbers.
 **To validate a phone number:**
 
     TelephoneNumber.valid?("(555) 555-5555", "US") ==> false
-    
-You can pass an optional array of keys to check the validity against. 
+
+You can pass an optional array of keys to check the validity against.
 
     TelephoneNumber.valid?("(555) 555-5555", "US", [:mobile, :fixed_line]) ==> false
 
 **To parse a phone number:**
 
-    TelephoneNumber.parse("(317) 508-3348", "US") ==>  
-        
-        #<TelephoneNumber::Number:0x007fe3bc146cf0 
-          @country="US", 
+    TelephoneNumber.parse("(317) 508-3348", "US") ==>
+
+        #<TelephoneNumber::Number:0x007fe3bc146cf0
+          @country="US",
           @e164_number="13175083348",
           @national_number="3175083348",
           @original_number="3175083348">
-          
+
 **To fetch valid types:**
 
     TelephoneNumber.parse("(317) 508-3348", "US").valid_types ==>  ["mobile", "fixed_line"]
-    
+
+**To format nationally:**
+
+    TelephoneNumber.parse("(317) 508-3348", "US").national_number ==> "(317) 508-3348"
+    TelephoneNumber.parse("(317) 508-3348", "US").national_number(formatted: false) ==> "3175083348"
+
 ## Configuration
 
-In the event that you need to override the data that Google is providing, you can do so by setting an override file. This file is expected to be in the same format as Google's as well as serialized using Marshal. 
+In the event that you need to override the data that Google is providing, you can do so by setting an override file. This file is expected to be in the same format as Google's as well as serialized using Marshal.
 
-To generate a serialized override file: 
+To generate a serialized override file:
 
     TelephoneNumber.generate_override_file("/path/to/file")
-    
+
 In this instance, `/path/to/file` represents an xml file that has your custom data in the same structure that Google's data is in.
 
 You can set the override file with:
-    
+
     TelephoneNumber.override_file = "/path/to_file.dat"
-    
+
 ## Todo
 
 - Build custom validator to integrate with Rails
@@ -68,7 +75,9 @@ You can set the override file with:
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+While developing new functionality, you may want to test against specific phone numbers. In order to do this, add the number to `lib/telephone_number/test_data_generator.rb` and then run `rake data:test:import`. This command will reach out to the demo application provided by Google and pull the correct formats to test against.
+
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
