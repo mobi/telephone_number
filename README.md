@@ -22,41 +22,90 @@ Or install it yourself as:
 
 ## Usage
 
-TelephoneNumber requires a country when parsing and validating phone numbers.
+You can obtain a `TelephoneNumber` object by calling: 
 
-**To validate a phone number:**
+```
+phone_object = TelephoneNumber.parse("3175082237", :us) ==>
 
-    TelephoneNumber.valid?("(555) 555-5555", "US") ==> false
+#<TelephoneNumber::Number:0x007fe3bc146cf0
+  @country=:US,
+  @e164_number="13175083348",
+  @national_number="3175083348",
+  @original_number="3175083348">    
+```
+After that you have the following instance methods available to you. 
 
-You can pass an optional array of keys to check the validity against.
+- ### `valid_types`
+  
+  Returns all types that the number is considered valid for.
+  
+  `phone_object.valid_types ==> [:fixed_line, :mobile, :toll_free]`   
 
-    TelephoneNumber.valid?("(555) 555-5555", "US", [:mobile, :fixed_line]) ==> false
+- ### `valid?`
 
-**To parse a phone number:**
+  Returns boolean value indicating whether or not `valid_types` is empty.
 
-    TelephoneNumber.parse("(317) 508-3348", "US") ==>
+  `phone_object.valid? ==> true`
 
-        #<TelephoneNumber::Number:0x007fe3bc146cf0
-          @country="US",
-          @e164_number="13175083348",
-          @national_number="3175083348",
-          @original_number="3175083348">
+- ### `national_number(formatted: true)`
 
-**To fetch valid types:**
+  Returns the national formatted number including special characters such as parenthesis and dashes. You can omit the special characters by passing `formatted: false`
+  
+  `phone_object.national_number ==> "(317) 508-2237"`
 
-    TelephoneNumber.parse("(317) 508-3348", "US").valid_types ==>  ["mobile", "fixed_line"]
+- ### `international_number(formatted: true)`
+  
+  Returns the international formatted number including special characters such as parenthesis and dashes. You can omit the special characters by passing `formatted: false`
 
-**To format nationally:**
+  `phone_object.international_number ==> "+1 317-508-2237"`
+  
+- ### `e164_number(formatted: true)`
 
-    TelephoneNumber.parse("(317) 508-3348", "US").national_number ==> "(317) 508-3348"
-    TelephoneNumber.parse("(317) 508-3348", "US").national_number(formatted: false) ==> "3175083348"
+  Returns the international formatted number including special characters such as parenthesis and dashes. You can omit the special characters by passing `formatted: false`
+  
+  `phone_object.e164_number ==> "+13175082237"`
+  
+- ### `country`
+  
+  Returns a symbol representation of the ISO 3166-1 alpha-2 for the country. 
+  
+  `phone_object.country ==> :US`
+  
+- ### `country_data`
 
+  Returns a symbolized hash of all data TelephoneNumber has about a number's particular country. 
+  
+### Class Methods
+  
+  You also have the following class methods available to you. 
+  
+  - #### `parse`
+  
+    Returns a TelephoneNumber object. 
+    
+    `TelephoneNumber.parse("3175082237", :US)`
+    
+  - #### `valid?`
+    
+    Returns boolean value indicating whether or not a particular number is valid.
+    
+    `TelephoneNumber.valid?("3175082237", :US) ==> true`
+    
+  - #### `invalid?`
+  
+    Returns boolean value indicating whether or not a particular number is invalid.
+    
+    `TelephoneNumber.invalid?("3175082237", :US) ==> false`
+    
 ## Configuration
+
+### Override File
 
 In the event that you need to override the data that Google is providing, you can do so by setting an override file. This file is expected to be in the same format as Google's as well as serialized using Marshal.
 
 To generate a serialized override file:
 
+    ruby bin/console
     TelephoneNumber.generate_override_file("/path/to/file")
 
 In this instance, `/path/to/file` represents an xml file that has your custom data in the same structure that Google's data is in.
@@ -64,11 +113,24 @@ In this instance, `/path/to/file` represents an xml file that has your custom da
 You can set the override file with:
 
     TelephoneNumber.override_file = "/path/to_file.dat"
+    
+### Default Number Pattern
 
+If TelephoneNumber is passed an invalid number and then asked to format that number, it will simply return an unformatted string of the originally passed number. This is because formatting rules will not be found for invalid numbers. If this is unacceptable, you can set a `default_format_pattern` and `default_format_string` that TelephoneNumber will use attempt to format invalid numbers. 
+
+```
+TelephoneNumber.default_format_pattern = "(\\d{3})(\\d{3})(\\d*)"
+TelephoneNumber.default_format_string = "($1) $2-$3"
+
+invalid_number = "1111111111"
+phone_object = TelephoneNumber.parse(invalid_number, :US)
+phone_object.national_number ==> "(111) 111-1111"
+```
+    
 ## Todo
 
 - Build custom validator to integrate with Rails
-- Build formatting functionality
+- ~~Build formatting functionality~~
 - Build extended data functionality(short codes, carrier data, etc.)
 
 ## Development

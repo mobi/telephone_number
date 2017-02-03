@@ -1,7 +1,7 @@
 module TelephoneNumber
   module Formatter
     def build_national_number(formatted: true)
-      return normalized_number if !valid? || format.nil?
+      return normalized_or_default if !valid? || format.nil?
       captures = normalized_number.match(Regexp.new(format[PhoneData::PATTERN])).captures
       national_prefix_formatting_rule = format[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE] \
                                          || country_data[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE]
@@ -26,7 +26,7 @@ module TelephoneNumber
     end
 
     def build_international_number(formatted: true)
-      return normalized_number if !valid? || format.nil?
+      return normalized_or_default if !valid? || format.nil?
       captures = normalized_number.match(Regexp.new(format[PhoneData::PATTERN])).captures
       key = format.fetch(PhoneData::INTL_FORMAT, 'NA') != 'NA' ? PhoneData::INTL_FORMAT : PhoneData::FORMAT
       format_string = format[key].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
@@ -34,6 +34,13 @@ module TelephoneNumber
     end
 
     private
+
+    def normalized_or_default
+      return normalized_number if !TelephoneNumber.default_format_string || !TelephoneNumber.default_format_pattern
+      captures = normalized_number.match(TelephoneNumber.default_format_pattern).captures
+      format_string = TelephoneNumber.default_format_string.gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
+      sprintf(format_string, *captures)
+    end
 
     def extract_format
       native_country_format = detect_format(country.to_sym)
