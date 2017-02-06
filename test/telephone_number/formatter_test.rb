@@ -40,6 +40,16 @@ module TelephoneNumber
       end
     end
 
+    def test_invalid_numbers_go_to_default_pattern
+      TelephoneNumber.default_format_pattern = "(\\d{3})(\\d{3})(\\d*)"
+      TelephoneNumber.default_format_string = "($1) $2-$3"
+      invalid_number = "1111111111"
+      assert_equal "(111) 111-1111", TelephoneNumber.parse(invalid_number, :us).national_number
+
+      TelephoneNumber.class_variable_set(:@@default_format_pattern, nil)
+      TelephoneNumber.class_variable_set(:@@default_format_string, nil)
+    end
+
     def test_invalid_formatted_national_number_for_countries
       @invalid_numbers.each do |country, number_object|
         number_object.values.each do |number_data|
