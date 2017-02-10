@@ -1,13 +1,13 @@
 module TelephoneNumber
   module Formatter
     def build_national_number(formatted: true)
-      return normalized_or_default if !valid? || format.nil?
-      captures = normalized_number.match(Regexp.new(format[PhoneData::PATTERN])).captures
-      national_prefix_formatting_rule = format[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE] \
+      return normalized_or_default if !valid? || number_format.nil?
+      captures = normalized_number.match(Regexp.new(number_format[PhoneData::PATTERN])).captures
+      national_prefix_formatting_rule = number_format[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE] \
                                          || country_data[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE]
 
-      format_string = format[PhoneData::FORMAT].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
-      formatted_string = sprintf(format_string, *captures)
+      format_string = number_format[PhoneData::FORMAT].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
+      formatted_string = format(format_string, *captures)
       captures.delete(PhoneData::MOBILE_TOKEN_COUNTRIES[country])
 
       if national_prefix_formatting_rule
@@ -26,11 +26,12 @@ module TelephoneNumber
     end
 
     def build_international_number(formatted: true)
-      return normalized_or_default if !valid? || format.nil?
-      captures = normalized_number.match(Regexp.new(format[PhoneData::PATTERN])).captures
-      key = format.fetch(PhoneData::INTL_FORMAT, 'NA') != 'NA' ? PhoneData::INTL_FORMAT : PhoneData::FORMAT
-      format_string = format[key].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
-      "+#{country_data[PhoneData::COUNTRY_CODE]} #{sprintf(format_string, *captures)}"
+      return normalized_or_default if !valid? || number_format.nil?
+      captures = normalized_number.match(Regexp.new(number_format[PhoneData::PATTERN])).captures
+      key = number_format.fetch(PhoneData::INTL_FORMAT, 'NA') != 'NA' ? PhoneData::INTL_FORMAT : PhoneData::FORMAT
+      format_string = number_format[key].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
+      formatted_string = "+#{country_data[PhoneData::COUNTRY_CODE]} #{format(format_string, *captures)}"
+      formatted ? formatted_string : sanitize(formatted_string)
     end
 
     private
@@ -39,15 +40,15 @@ module TelephoneNumber
       return normalized_number if !TelephoneNumber.default_format_string || !TelephoneNumber.default_format_pattern
       captures = normalized_number.match(TelephoneNumber.default_format_pattern).captures
       format_string = TelephoneNumber.default_format_string.gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
-      sprintf(format_string, *captures)
+      format(format_string, *captures)
     end
 
-    def extract_format
+    def extract_number_format
       native_country_format = detect_format(country.to_sym)
       return native_country_format if native_country_format
 
       # This means we couldn't find an applicable format so we now need to scan through the hierarchy
-      parent_country_code = PhoneData.phone_data.detect do |country_code, country_data|
+      parent_country_code = PhoneData.phone_data.detect do |_country_code, country_data|
         country_data[PhoneData::COUNTRY_CODE] == PhoneData.phone_data[self.country.to_sym][PhoneData::COUNTRY_CODE] \
           && country_data[PhoneData::MAIN_COUNTRY_FOR_CODE] == 'true'
       end

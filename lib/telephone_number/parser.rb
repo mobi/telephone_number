@@ -3,14 +3,14 @@ module TelephoneNumber
     KEYS_TO_SKIP = [PhoneData::GENERAL, PhoneData::AREA_CODE_OPTIONAL]
 
     def sanitize(input_number)
-      return input_number.gsub(/[^0-9]/, "")
+      return input_number.gsub(/[^0-9]/, '')
     end
 
     # returns an array of valid types for the normalized number
     # if array is empty, we can assume that the number is invalid
     def validate
       return [] unless country_data
-      applicable_keys = country_data[PhoneData::VALIDATIONS].reject{ |key, _value| KEYS_TO_SKIP.include?(key) }
+      applicable_keys = country_data[PhoneData::VALIDATIONS].reject { |key, _value| KEYS_TO_SKIP.include?(key) }
       applicable_keys.map do |phone_type, validations|
         full = "^(#{validations[PhoneData::VALID_PATTERN]})$"
         phone_type.to_sym if normalized_number =~ Regexp.new(full)
@@ -25,7 +25,7 @@ module TelephoneNumber
 
       number_with_correct_prefix = parse_prefix
 
-      reg_string  = "^(#{country_code})?"
+      reg_string = "^(#{country_code})?"
       reg_string << "(#{country_data[PhoneData::NATIONAL_PREFIX]})?"
       reg_string << "(#{country_data[PhoneData::VALIDATIONS][PhoneData::GENERAL][PhoneData::VALID_PATTERN]})$"
 
@@ -53,16 +53,16 @@ module TelephoneNumber
 
     def transform_national_prefix(duped, match_object)
       if PhoneData::MOBILE_TOKEN_COUNTRIES.include?(country) && match_object.captures.any?
-        sprintf(build_format_string, duped.sub!(match_object[0], match_object[1]))
+        format(build_format_string, duped.sub!(match_object[0], match_object[1]))
       elsif match_object.captures.none?
         duped.sub!(match_object[0], '')
       else
-        sprintf(build_format_string, *match_object.captures)
+        format(build_format_string, *match_object.captures)
       end
     end
 
     def build_format_string
-      country_data[:national_prefix_transform_rule].gsub(/(\$\d)/) {|cap| "%#{cap.reverse}s"}
+      country_data[:national_prefix_transform_rule].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
     end
   end
 end
