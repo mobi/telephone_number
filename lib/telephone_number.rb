@@ -1,4 +1,5 @@
-require "telephone_number/version"
+require 'telephone_number/version'
+require 'utilities/hash'
 
 module TelephoneNumber
   autoload :DataImporter, 'telephone_number/data_importer'

@@ -50,7 +50,7 @@ module TelephoneNumber
         output_hash[key] = {}
 
         value.each_with_index do |num, counter|
-          page = HTTParty.get(sprintf(URL, num, key.to_s))
+          page = HTTParty.get(format(URL, num, key.to_s))
           parsed_page = Nokogiri::HTML.parse(page)
           body = parsed_page.elements.first.elements.css('body').first
           parsed_data = parse_remote_data(counter, body.elements.css('table')[2])

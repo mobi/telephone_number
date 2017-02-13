@@ -52,8 +52,8 @@ module TelephoneNumber
 
     private
 
-    def format
-      @format ||= extract_format
+    def number_format
+      @number_format ||= extract_number_format
     end
   end
 end
