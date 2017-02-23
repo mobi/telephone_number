@@ -1,5 +1,5 @@
 module TelephoneNumber
-  module PhoneData
+  class PhoneData
     AREA_CODE_OPTIONAL = :area_code_optional
     COUNTRY_CODE = :country_code
     FIXED_LINE = :fixed_line
@@ -28,6 +28,8 @@ module TelephoneNumber
     VOICEMAIL = :voicemail
     VOIP = :voip
 
+    attr_reader :country_data, :country
+
     def self.phone_data
       @@phone_data ||= load_data
     end
@@ -38,6 +40,11 @@ module TelephoneNumber
       override_data = {}
       override_data = Marshal.load(File.binread(TelephoneNumber.override_file)) if TelephoneNumber.override_file
       return main_data.deep_deep_merge!(override_data)
+    end
+
+    def initialize(country)
+      @country = country.to_s.upcase.to_sym
+      @country_data = self.class.phone_data[@country]
     end
   end
 end

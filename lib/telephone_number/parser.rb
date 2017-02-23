@@ -1,10 +1,38 @@
 module TelephoneNumber
-  module Parser
+  class Parser
     KEYS_TO_SKIP = [PhoneData::GENERAL, PhoneData::AREA_CODE_OPTIONAL]
+    extend Forwardable
 
-    def sanitize(input_number)
-      return input_number.gsub(/[^0-9]/, '')
+    delegate [:country_data, :country] => :phone_data
+    attr_reader :sanitized_number, :original_number, :normalized_number, :phone_data
+
+    def initialize(original_number, phone_data)
+      @sanitized_number = self.class.sanitize(original_number)
+      @phone_data = phone_data
+      @original_number = original_number
+      @normalized_number = build_normalized_number
     end
+
+    def valid_types
+      @valid_types ||= validate
+    end
+
+    def valid?(keys = [])
+      keys.empty? ? !valid_types.empty? : !(valid_types & keys.map(&:to_sym)).empty?
+    end
+
+    def self.detect_country(number)
+      sanitized_number = sanitize(number)
+      detected_country = PhoneData.phone_data.detect(->{[]}) do |two_letter, value|
+        sanitized_number =~ Regexp.new("^#{value[:country_code]}") && new(sanitized_number, PhoneData.new(two_letter)).valid?
+      end.first
+    end
+
+    def self.sanitize(input_number)
+      return input_number.to_s.gsub(/\D/, '')
+    end
+
+    private
 
     # returns an array of valid types for the normalized number
     # if array is empty, we can assume that the number is invalid
@@ -17,10 +45,11 @@ module TelephoneNumber
       end.compact
     end
 
-    private
-
+    # normalized_number is basically a "best effort" at national number without
+    # any formatting. This is what we will use to derive formats, validations and
+    # basically anything else that uses google data
     def build_normalized_number
-      return original_number unless country_data
+      return sanitized_number unless country_data
       country_code = country_data[PhoneData::COUNTRY_CODE]
 
       number_with_correct_prefix = parse_prefix
@@ -30,20 +59,20 @@ module TelephoneNumber
       reg_string << "(#{country_data[PhoneData::VALIDATIONS][PhoneData::GENERAL][PhoneData::VALID_PATTERN]})$"
 
       match_result = number_with_correct_prefix.match(Regexp.new(reg_string))
-      return original_number unless match_result
+      return sanitized_number unless match_result
       prefix_results = [match_result[1], match_result[2]]
       number_with_correct_prefix.sub(prefix_results.join, '')
     end
 
     def parse_prefix
-      return original_number unless country_data[:national_prefix_for_parsing]
-      duped = original_number.dup
+      return sanitized_number unless country_data[:national_prefix_for_parsing]
+      duped = sanitized_number.dup
       match_object = duped.match(Regexp.new(country_data[:national_prefix_for_parsing]))
 
       # we need to do the "start_with?" here because we need to make sure it's not finding
       # something in the middle of the number. However, we can't modify the regex to do this
       # for us because it will offset the match groups that are referenced in the transform rules
-      return original_number unless match_object && duped.start_with?(match_object[0])
+      return sanitized_number unless match_object && duped.start_with?(match_object[0])
       if country_data[:national_prefix_transform_rule]
         transform_national_prefix(duped, match_object)
       else

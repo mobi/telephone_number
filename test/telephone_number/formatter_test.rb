@@ -7,6 +7,22 @@ module TelephoneNumber
       @invalid_numbers = YAML.load_file('test/invalid_numbers.yml')
     end
 
+    def test_returns_empty_string_if_input_is_nil
+      country_inputs = [nil, '', :us]
+      number_inputs = [nil, '']
+      methods = [:international_number, :national_number, :e164_number]
+
+      country_inputs.product(number_inputs, methods).each do |country, number, method|
+        assert_equal '', TelephoneNumber.parse(number, country).public_send(method)
+      end
+    end
+
+    def test_returns_sanitized_string_when_country_is_nil
+      assert_equal '3175082205', TelephoneNumber.parse('3175082205', nil).international_number
+      assert_equal '3175082205', TelephoneNumber.parse('3175082205', nil).national_number
+      assert_equal '3175082205', TelephoneNumber.parse('3175082205', nil).e164_number
+    end
+
     def test_valid_formatted_national_number_for_countries
       @valid_numbers.each do |country, number_object|
         number_object.values.each do |number_data|

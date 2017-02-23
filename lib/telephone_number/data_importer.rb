@@ -1,16 +1,17 @@
 module TelephoneNumber
   require 'nokogiri'
   class DataImporter
-    attr_reader :data, :file
+    attr_reader :data, :file, :override
 
-    def initialize(file_name)
+    def initialize(file_name, override: false)
       @data = {}
       @file = File.open(file_name) { |f| Nokogiri::XML(f) }
+      @override = override
     end
 
-    def import!(override: false)
+    def import!
       parse_main_data
-      save_data_file(override: override)
+      save_data_file
     end
 
     def parse_main_data
@@ -28,7 +29,7 @@ module TelephoneNumber
     private
 
     def load_formats(country_data, territory)
-      country_data[PhoneData::FORMATS] = territory.css('availableFormats numberFormat').map do |format|
+      formats_arr = territory.css('availableFormats numberFormat').map do |format|
         {}.tap do |fhash|
           format.attributes.values.each do |attr|
             key = underscore(attr.name).to_sym
@@ -44,6 +45,9 @@ module TelephoneNumber
           end
         end
       end
+
+      return if override && formats_arr.empty?
+      country_data[PhoneData::FORMATS] = formats_arr
     end
 
     def load_validations(country_data, territory)
@@ -54,6 +58,7 @@ module TelephoneNumber
           element.elements.each { |child| validation_hash[underscore(child.name).to_sym] = child.text.delete("\n ") }
         end
       end
+      country_data.delete(PhoneData::VALIDATIONS) if country_data[PhoneData::VALIDATIONS].empty? && override
     end
 
     def load_base_attributes(country_data, territory)
@@ -68,7 +73,9 @@ module TelephoneNumber
     end
 
     def load_references(country_data, territory)
-      country_data[:references] = territory.css('references sourceUrl').map(&:text)
+      ref_arr = territory.css('references sourceUrl').map(&:text)
+      return if override && ref_arr.empty?
+      country_data[:references] = ref_arr
     end
 
     def underscore(camel_cased_word)
@@ -81,7 +88,7 @@ module TelephoneNumber
       word
     end
 
-    def save_data_file(override: false)
+    def save_data_file
       data_file = override ? 'telephone_number_data_override_file.dat' : "#{File.dirname(__FILE__)}/../../data/telephone_number_data_file.dat"
       File.open(data_file, 'wb+') { |f| Marshal.dump(@data, f) }
     end

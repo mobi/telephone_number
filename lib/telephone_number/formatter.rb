@@ -1,13 +1,56 @@
 module TelephoneNumber
-  module Formatter
+  class Formatter
+    extend Forwardable
+
+    attr_reader :normalized_number, :phone_data, :valid
+
+    delegate [:country_data, :country] => :phone_data
+
+    def initialize(number_obj, phone_data)
+      @normalized_number = number_obj.normalized_number
+      @phone_data = phone_data
+      @valid = number_obj.valid?
+    end
+
+    def national_number(formatted: true)
+      if formatted
+        @formatted_national_number ||= build_national_number
+      else
+        @national_number ||= build_national_number(formatted: false)
+      end
+    end
+
+    def e164_number(formatted: true)
+      if formatted
+        @formatted_e164_number ||= build_e164_number
+      else
+        @e164_number ||= build_e164_number(formatted: false)
+      end
+    end
+
+    def international_number(formatted: true)
+      if formatted
+        @formatted_international_number ||= build_international_number
+      else
+        @international_number ||= build_international_number(formatted: false)
+      end
+    end
+
+    alias_method :valid?, :valid
+
+    private
+
+    def number_format
+      @number_format ||= extract_number_format
+    end
+
     def build_national_number(formatted: true)
       return normalized_or_default if !valid? || number_format.nil?
       captures = normalized_number.match(Regexp.new(number_format[PhoneData::PATTERN])).captures
       national_prefix_formatting_rule = number_format[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE] \
                                          || country_data[PhoneData::NATIONAL_PREFIX_FORMATTING_RULE]
 
-      format_string = number_format[PhoneData::FORMAT].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
-      formatted_string = format(format_string, *captures)
+      formatted_string = format(ruby_format_string(number_format[PhoneData::FORMAT]), *captures)
       captures.delete(PhoneData::MOBILE_TOKEN_COUNTRIES[country])
 
       if national_prefix_formatting_rule
@@ -17,30 +60,31 @@ module TelephoneNumber
         formatted_string.sub!(captures[0], national_prefix_string)
       end
 
-      formatted ? formatted_string : sanitize(formatted_string)
+      formatted ? formatted_string : Parser.sanitize(formatted_string)
     end
 
     def build_e164_number(formatted: true)
+      return normalized_or_default if !country_data || normalized_number.empty?
       formatted_string = "+#{country_data[PhoneData::COUNTRY_CODE]}#{normalized_number}"
-      formatted ? formatted_string : sanitize(formatted_string)
+      formatted ? formatted_string : Parser.sanitize(formatted_string)
     end
 
     def build_international_number(formatted: true)
       return normalized_or_default if !valid? || number_format.nil?
       captures = normalized_number.match(Regexp.new(number_format[PhoneData::PATTERN])).captures
       key = number_format.fetch(PhoneData::INTL_FORMAT, 'NA') != 'NA' ? PhoneData::INTL_FORMAT : PhoneData::FORMAT
-      format_string = number_format[key].gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
-      formatted_string = "+#{country_data[PhoneData::COUNTRY_CODE]} #{format(format_string, *captures)}"
-      formatted ? formatted_string : sanitize(formatted_string)
+      formatted_string = "+#{country_data[PhoneData::COUNTRY_CODE]} #{format(ruby_format_string(number_format[key]), *captures)}"
+      formatted ? formatted_string : Parser.sanitize(formatted_string)
     end
 
-    private
+    def ruby_format_string(format_string)
+      format_string.gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
+    end
 
     def normalized_or_default
-      return normalized_number if !TelephoneNumber.default_format_string || !TelephoneNumber.default_format_pattern
+      return normalized_number unless TelephoneNumber.default_format_string && TelephoneNumber.default_format_pattern
       captures = normalized_number.match(TelephoneNumber.default_format_pattern).captures
-      format_string = TelephoneNumber.default_format_string.gsub(/(\$\d)/) { |cap| "%#{cap.reverse}s" }
-      format(format_string, *captures)
+      format(ruby_format_string(TelephoneNumber.default_format_string), *captures)
     end
 
     def extract_number_format

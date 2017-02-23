@@ -1,0 +1,250 @@
+<!-- Copyright (C) 2009 The Libphonenumber Authors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+     @author: Shaopeng Jia
+
+     Metadata on Phone Number Plan and formatting rules
+     Note: Territories are in alphabetical order by their IDs, which are based on ISO 3166-1
+           two-letter country codes (or are set to "001" for non-geographical entities, which
+           represents "World" in the UN M.49 standard). The country names in the comments are the
+           official short names in English according to ISO 3166-1.
+
+     For more information on what each element represents, see
+     resources/phonemetadata.proto
+
+     Note that if you want to add validation metadata, the generalDesc nationalNumberPattern and
+     possibleNumberPattern must be provided. If this is missing, then the country will be
+     considered to have no more specific phone-number type metadata (fixedLine, mobile etc) and
+     hence only basic validation rules (numbers should be between 3 and 15 digits long) will be
+     applied.
+
+     If adding an element for a non-geographical entity, please add an example number element to the
+     general description.
+
+     Country code, international and national prefix information main source:
+     http://www.itu.int/pub/T-SP-E.164C-2011
+-->
+
+<!DOCTYPE phoneNumberMetadata [
+    <!ELEMENT phoneNumberMetadata (territories)>
+    <!ELEMENT territories (territory+)>
+    <!ELEMENT territory (references?, availableFormats?, generalDesc, noInternationalDialling?,
+        areaCodeOptional?, fixedLine?, mobile?, pager?, tollFree?, premiumRate?,
+        sharedCost?, personalNumber?, voip?, uan?, voicemail?)>
+    <!ELEMENT references (sourceUrl+)>
+    <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern)>
+    <!ELEMENT noInternationalDialling (nationalNumberPattern, possibleNumberPattern?,
+        possibleLengths, exampleNumber)>
+    <!ELEMENT areaCodeOptional (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT fixedLine (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT mobile (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT pager (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT tollFree (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT premiumRate (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT sharedCost (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT personalNumber (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT voip (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT uan (nationalNumberPattern, possibleNumberPattern?, possibleLengths, exampleNumber)>
+    <!ELEMENT voicemail (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT sourceUrl (#PCDATA)>
+    <!ELEMENT availableFormats (numberFormat+)>
+    <!ELEMENT nationalNumberPattern (#PCDATA)>
+    <!ELEMENT possibleNumberPattern (#PCDATA)>
+    <!ELEMENT exampleNumber (#PCDATA)>
+    <!ELEMENT numberFormat (leadingDigits*, format, intlFormat*)>
+    <!ELEMENT format (#PCDATA)>
+    <!ELEMENT intlFormat (#PCDATA)>
+    <!ELEMENT leadingDigits (#PCDATA)>
+    <!ELEMENT possibleLengths EMPTY>
+
+    <!ATTLIST territory id CDATA #REQUIRED>
+    <!ATTLIST territory countryCode CDATA #REQUIRED>
+    <!ATTLIST territory mainCountryForCode (true) #IMPLIED>
+    <!ATTLIST territory leadingDigits CDATA #IMPLIED>
+    <!ATTLIST territory preferredInternationalPrefix CDATA #IMPLIED>
+    <!ATTLIST territory internationalPrefix CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefix CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixForParsing CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixTransformRule CDATA #IMPLIED>
+    <!ATTLIST territory preferredExtnPrefix CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixFormattingRule CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixOptionalWhenFormatting (true) #IMPLIED>
+    <!ATTLIST territory leadingZeroPossible (true) #IMPLIED>
+    <!ATTLIST territory carrierCodeFormattingRule CDATA #IMPLIED>
+    <!ATTLIST territory mobileNumberPortableRegion (true) #IMPLIED>
+    <!ATTLIST possibleLengths national CDATA #REQUIRED>
+    <!ATTLIST possibleLengths localOnly CDATA #IMPLIED>
+    <!ATTLIST numberFormat nationalPrefixFormattingRule CDATA #IMPLIED>
+    <!ATTLIST numberFormat nationalPrefixOptionalWhenFormatting (true) #IMPLIED>
+    <!ATTLIST numberFormat carrierCodeFormattingRule CDATA #IMPLIED>
+    <!ATTLIST numberFormat pattern CDATA #REQUIRED>
+]>
+
+<phoneNumberMetadata>
+  <territories>
+    <!-- United States -->
+    <!-- Note the national prefix of US is the same as its country code, and when formatting phone
+         numbers in the national format, it is not included. Therefore, we omit it here to make
+         formatting consistent with the rest of the world. The same applies to all the
+         countries/regions under NANPA -->
+    <!-- The national prefix of "1" here is the same as the country code. It is not used by default
+         when formatting, but is set here so that users who are calling formatByPattern can specify
+         NationalPrefixFormattingRule if they want to. -->
+    <territory id="US" countryCode="1" internationalPrefix="011" mainCountryForCode="true"
+               nationalPrefix="1" nationalPrefixOptionalWhenFormatting="true"
+               mobileNumberPortableRegion="true">
+      <!-- This key represents US territories Puerto Rico and US Virgin Islands since MOBI treats these as part of the US. It's a dumping ground -->
+      <!-- I know... I know...-->
+      <territories>
+        <nationalNumberPattern>
+          (?:
+            787|
+            939
+          )[2-9]\d{6}|
+          340(?:
+            2(?:
+              01|
+              2[0678]|
+              44|
+              77
+            )|
+            3(?:
+              32|
+              44
+            )|
+            4(?:
+              22|
+              7[34]
+            )|
+            5(?:
+              1[34]|
+              55
+            )|
+            6(?:
+              26|
+              4[23]|
+              77|
+              9[023]
+            )|
+            7(?:
+              1[2-589]|
+              27|
+              7\d
+            )|
+            884|
+            998
+          )\d{4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <possibleLengths national="10"/>
+        <exampleNumber>8002345678</exampleNumber>
+      </territories>
+      <personalNumber>
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
+        <nationalNumberPattern>
+          (?:
+            1(?:30|40|47|00)|
+            5(?:
+              00|
+              22|
+              33|
+              44|
+              66|
+              77|
+              88
+            )
+          )\d{7}
+        </nationalNumberPattern>
+      </personalNumber>
+
+      <!-- NOTE: These pager numbers represent "spare" pagers in MOBI. These are pagers that are not callable but are still -->
+      <!-- billed to the customers. That said, normal, callable pager numbers should still adhere to the NANPA -->
+      <pager>
+        <nationalNumberPattern>
+          (?:
+            0(?:500)|
+            1(?:500)|
+            8(?:500)
+          )[0-9]\d{5}
+        </nationalNumberPattern>
+      </pager>
+    </territory>
+
+    <!-- Inmarsat Global Limited -->
+    <territory id="XX" countryCode="870">
+      <references>
+        <sourceUrl>http://www.itu.int/oth/T0202000065/en</sourceUrl>
+        <sourceUrl>http://www.inmarsat.com</sourceUrl>
+      </references>
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[35-7]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <mobile>
+        <!-- Assigning these to mobile since Inmarsat considers them to be mobile numbers. -->
+        <nationalNumberPattern>
+          (?:
+            [356]\d|
+            7[6-8]
+          )\d{7}
+        </nationalNumberPattern>
+        <possibleLengths national="9"/>
+        <exampleNumber>301234567</exampleNumber>
+      </mobile>
+    </territory>
+
+    <!-- Iridium -->
+    <!-- Globalstar also reports using this prefix, but we cannot find any online numbers with the
+         Globalstar prefixes, so are not sure how exactly these work, and what length the numbers
+         are. For this reason, we only support Iridium numbers at the moment. -->
+    <territory id="XY" countryCode="881">
+      <references>
+        <sourceUrl>http://www.iridium.com</sourceUrl>
+        <sourceUrl>http://www.itu.int/oth/T0202000069/en</sourceUrl>
+      </references>
+      <availableFormats>
+        <!-- Formatting chosen based on ITU document and Iridium website FAQ. -->
+        <numberFormat pattern="(\d)(\d{3})(\d{5})">
+          <leadingDigits>[67]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <mobile>
+        <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
+        <possibleLengths national="9"/>
+        <exampleNumber>612345678</exampleNumber>
+      </mobile>
+    </territory>
+  </territories>
+</phoneNumberMetadata>
+
