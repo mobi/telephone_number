@@ -1,5 +1,6 @@
 require 'telephone_number/version'
 require 'utilities/hash'
+require 'forwardable'
 
 module TelephoneNumber
   autoload :DataImporter, 'telephone_number/data_importer'
@@ -44,11 +45,4 @@ module TelephoneNumber
   def self.default_format_pattern
     @@default_format_pattern
   end
-
-
-  # generates binary file from xml that user gives us
-  def self.generate_override_file(file)
-    DataImporter.new(file).import!(override: true)
-  end
-
 end
