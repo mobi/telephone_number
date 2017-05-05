@@ -103,8 +103,10 @@ After that you have the following instance methods available to you.
     
     If you are looking to validate against a specific set of keys, you can pass in an array of keys
     
-    `TelephoneNumber.valid?("3175082237", :US, [:mobile, :fixed_line]) ==> true`
-    `TelephoneNumber.valid?("3175082237", :US, [:toll_free]) ==> false`
+    ```
+    TelephoneNumber.valid?("3175082237", :US, [:mobile, :fixed_line]) ==> true
+    TelephoneNumber.valid?("3175082237", :US, [:toll_free]) ==> false
+    ```
     
   - #### `invalid?`
   
@@ -114,8 +116,11 @@ After that you have the following instance methods available to you.
     
     If you are looking to validate against a specific set of keys, you can pass in an array of keys
     
-    `TelephoneNumber.invalid?("3175082237", :US, [:mobile, :fixed_line]) ==> false`
-    `TelephoneNumber.invalid?("3175082237", :US, [:toll_free]) ==> true`
+    ```
+    TelephoneNumber.invalid?("3175082237", :US, [:mobile, :fixed_line]) ==> false
+    TelephoneNumber.invalid?("3175082237", :US, [:toll_free]) ==> true
+    ```
+
     
 ## Configuration
 
