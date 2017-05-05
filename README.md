@@ -91,17 +91,36 @@ After that you have the following instance methods available to you.
     
     `TelephoneNumber.parse("3175082237", :US)`
     
+    If you pass an E164 formatted number, we will determine the country on the fly. 
+    
+    `TelephoneNumber.parse("+13175082237")`
+    
   - #### `valid?`
     
     Returns boolean value indicating whether or not a particular number is valid.
     
     `TelephoneNumber.valid?("3175082237", :US) ==> true`
     
+    If you are looking to validate against a specific set of keys, you can pass in an array of keys
+    
+    ```
+    TelephoneNumber.valid?("3175082237", :US, [:mobile, :fixed_line]) ==> true
+    TelephoneNumber.valid?("3175082237", :US, [:toll_free]) ==> false
+    ```
+    
   - #### `invalid?`
   
     Returns boolean value indicating whether or not a particular number is invalid.
     
     `TelephoneNumber.invalid?("3175082237", :US) ==> false`
+    
+    If you are looking to validate against a specific set of keys, you can pass in an array of keys
+    
+    ```
+    TelephoneNumber.invalid?("3175082237", :US, [:mobile, :fixed_line]) ==> false
+    TelephoneNumber.invalid?("3175082237", :US, [:toll_free]) ==> true
+    ```
+
     
 ## Configuration
 
