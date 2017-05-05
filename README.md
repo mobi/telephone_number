@@ -114,7 +114,7 @@ After that you have the following instance methods available to you.
     
     `TelephoneNumber.invalid?("3175082237", :US) ==> false`
     
-    If you are looking to validate against a specific set of keys, you can pass in an array of keys
+    If you are looking to invalidate against a specific set of keys, you can pass in an array of keys
     
     ```
     TelephoneNumber.invalid?("3175082237", :US, [:mobile, :fixed_line]) ==> false
