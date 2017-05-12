@@ -18,7 +18,6 @@ module TelephoneNumber
     NO_INTERNATIONAL_DIALING = :no_international_dialling
     PATTERN = :pattern
     PERSONAL_NUMBER = :personal_number
-    POSSIBLE_PATTERN = :possible_number_pattern
     PREMIUM_RATE = :premium_rate
     SHARED_COST = :shared_cost
     TOLL_FREE = :toll_free
