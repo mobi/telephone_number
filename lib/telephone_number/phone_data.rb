@@ -30,7 +30,7 @@ module TelephoneNumber
     attr_reader :country_data, :country
 
     def self.phone_data
-      @@phone_data ||= load_data
+      @phone_data ||= load_data
     end
 
     def self.load_data

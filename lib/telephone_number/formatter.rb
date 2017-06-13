@@ -96,7 +96,8 @@ module TelephoneNumber
         country_data[PhoneData::COUNTRY_CODE] == PhoneData.phone_data[self.country.to_sym][PhoneData::COUNTRY_CODE] \
           && country_data[PhoneData::MAIN_COUNTRY_FOR_CODE] == 'true'
       end
-      detect_format(parent_country_code[0])
+
+      detect_format(parent_country_code[0]) if parent_country_code
     end
 
     def detect_format(country_code)
