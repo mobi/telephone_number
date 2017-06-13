@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/mobi/telephone_number/badges/gpa.svg)](https://codeclimate.com/github/mobi/telephone_number)
+[![Code Climate](https://codeclimate.com/github/mobi/telephone_number/badges/gpa.svg)](https://codeclimate.com/github/mobi/telephone_number) [![Coverage Status](https://coveralls.io/repos/github/mobi/telephone_number/badge.svg)](https://coveralls.io/github/mobi/telephone_number)
 
 # What is it?
 
