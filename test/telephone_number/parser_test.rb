@@ -32,6 +32,13 @@ module TelephoneNumber
       inputs.each { |number, country| assert TelephoneNumber.invalid?(number, country)}
     end
 
+    # This number is only valid bc of our data override file
+    def test_override_file_correctly_validates
+      number_obj = TelephoneNumber.parse('248596987', :br)
+      assert number_obj.valid?
+      assert_includes number_obj.valid_types, :dump_line
+    end
+
     def test_detect_country_for_numbers
       @valid_numbers.each do |country, number_object|
         number_object.each do |_name, number_data|

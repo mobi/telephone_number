@@ -1,0 +1,107 @@
+
+<!-- Copyright (C) 2009 The Libphonenumber Authors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+     @author: Shaopeng Jia
+
+     Metadata on Phone Number Plan and formatting rules
+     Note: Territories are in alphabetical order by their IDs, which are based on CLDR
+           two-letter region codes (or are set to "001" for non-geographical entities, which
+           represents "World" in the UN M.49 standard). The country names in the comments are the
+           official short names in English according to CLDR.
+
+     For more information on what each element represents, see
+     resources/phonemetadata.proto
+
+     Note that if you want to add validation metadata, the generalDesc nationalNumberPattern must be
+     provided. If this is missing, then the country will be considered to have no more specific
+     phone-number type metadata (fixedLine, mobile etc) and hence only basic validation rules
+     (numbers should be between 3 and 15 digits long) will be applied.
+
+     If adding an element for a non-geographical entity, please add an example number element to the
+     general description.
+
+     Country code, international and national prefix information main source:
+     http://www.itu.int/pub/T-SP-E.164C-2011
+-->
+
+<!DOCTYPE phoneNumberMetadata [
+    <!ELEMENT phoneNumberMetadata (territories)>
+    <!ELEMENT territories (territory+)>
+    <!ELEMENT territory (references?, availableFormats?, generalDesc, noInternationalDialling?,
+        areaCodeOptional?, fixedLine?, mobile?, pager?, tollFree?, premiumRate?,
+        sharedCost?, personalNumber?, voip?, uan?, voicemail?)>
+    <!ELEMENT references (sourceUrl+)>
+    <!ELEMENT generalDesc (nationalNumberPattern)>
+    <!ELEMENT noInternationalDialling (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT areaCodeOptional (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT fixedLine (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT mobile (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT pager (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT tollFree (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT premiumRate (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT sharedCost (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT personalNumber (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT voip (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT uan (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT voicemail (nationalNumberPattern, possibleLengths, exampleNumber)>
+    <!ELEMENT sourceUrl (#PCDATA)>
+    <!ELEMENT availableFormats (numberFormat+)>
+    <!ELEMENT nationalNumberPattern (#PCDATA)>
+    <!ELEMENT exampleNumber (#PCDATA)>
+    <!ELEMENT numberFormat (leadingDigits*, format, intlFormat*)>
+    <!ELEMENT format (#PCDATA)>
+    <!ELEMENT intlFormat (#PCDATA)>
+    <!ELEMENT leadingDigits (#PCDATA)>
+    <!ELEMENT possibleLengths EMPTY>
+
+    <!ATTLIST territory id CDATA #REQUIRED>
+    <!ATTLIST territory countryCode CDATA #REQUIRED>
+    <!ATTLIST territory mainCountryForCode (true) #IMPLIED>
+    <!ATTLIST territory leadingDigits CDATA #IMPLIED>
+    <!ATTLIST territory preferredInternationalPrefix CDATA #IMPLIED>
+    <!ATTLIST territory internationalPrefix CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefix CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixForParsing CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixTransformRule CDATA #IMPLIED>
+    <!ATTLIST territory preferredExtnPrefix CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixFormattingRule CDATA #IMPLIED>
+    <!ATTLIST territory nationalPrefixOptionalWhenFormatting (true) #IMPLIED>
+    <!ATTLIST territory leadingZeroPossible (true) #IMPLIED>
+    <!ATTLIST territory carrierCodeFormattingRule CDATA #IMPLIED>
+    <!ATTLIST territory mobileNumberPortableRegion (true) #IMPLIED>
+    <!ATTLIST possibleLengths national CDATA #REQUIRED>
+    <!ATTLIST possibleLengths localOnly CDATA #IMPLIED>
+    <!ATTLIST numberFormat nationalPrefixFormattingRule CDATA #IMPLIED>
+    <!ATTLIST numberFormat nationalPrefixOptionalWhenFormatting (true) #IMPLIED>
+    <!ATTLIST numberFormat carrierCodeFormattingRule CDATA #IMPLIED>
+    <!ATTLIST numberFormat pattern CDATA #REQUIRED>
+]>
+
+<phoneNumberMetadata>
+  <territories>
+    <!-- Brazil -->
+    <territory id="BR" countryCode="55"
+               internationalPrefix="00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)"
+               nationalPrefix="0"
+               nationalPrefixForParsing="0(?:(1[245]|2[1-35]|31|4[13]|[56]5|99)(\d{10,11}))?"
+               nationalPrefixTransformRule="$2" mobileNumberPortableRegion="true">
+      <dumpLine>
+        <nationalNumberPattern>(?:21|22|24|26)\d{7}</nationalNumberPattern>
+        <possibleLengths national="9"/>
+        <exampleNumber>701234567</exampleNumber>
+      </dumpLine>
+    </territory>
+  </territories>
+</phoneNumberMetadata>

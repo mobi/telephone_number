@@ -62,8 +62,17 @@ module TelephoneNumber
       invalid_number = "1111111111"
       assert_equal "(111) 111-1111", TelephoneNumber.parse(invalid_number, :us).national_number
 
-      TelephoneNumber.class_variable_set(:@@default_format_pattern, nil)
-      TelephoneNumber.class_variable_set(:@@default_format_string, nil)
+      TelephoneNumber.instance_variable_set(:@default_format_pattern, nil)
+      TelephoneNumber.instance_variable_set(:@default_format_string, nil)
+    end
+
+    # Our data override file ensure that this number is valid but doesn't provide a formatting rule
+    # which means the national and international number methods should just return the normalized number
+    def test_override_file_correctly_formats
+      number_obj = TelephoneNumber.parse('248596987', :br)
+      assert_equal '248596987', number_obj.national_number
+      assert_equal '248596987', number_obj.international_number
+      assert_equal '+55248596987', number_obj.e164_number
     end
 
     def test_invalid_formatted_national_number_for_countries
