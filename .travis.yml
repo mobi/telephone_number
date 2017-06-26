@@ -6,4 +6,7 @@ rvm:
   - 2.2.6
   - 2.3.3
   - 2.4.0
+  - jruby-9.1.5.0
 before_install: gem install bundler -v 1.13.7
+env:
+  - JRUBY_OPTS="--debug"
