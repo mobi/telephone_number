@@ -1,5 +1,12 @@
 module TelephoneNumber
   module ClassMethods
+    attr_accessor :override_file, :default_format_string
+    attr_reader :default_format_pattern
+
+    def default_format_pattern=(format_string)
+      @default_format_pattern = Regexp.new(format_string)
+    end
+
     def parse(number, country = Parser.detect_country(number))
       TelephoneNumber::Number.new(number, country)
     end

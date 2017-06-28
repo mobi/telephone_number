@@ -50,11 +50,10 @@ module TelephoneNumber
     # basically anything else that uses google data
     def build_normalized_number
       return sanitized_number unless country_data
-      country_code = country_data[PhoneData::COUNTRY_CODE]
 
       number_with_correct_prefix = parse_prefix
 
-      reg_string = "^(#{country_code})?"
+      reg_string = "^(#{country_data[PhoneData::COUNTRY_CODE]})?"
       reg_string << "(#{country_data[PhoneData::NATIONAL_PREFIX]})?"
       reg_string << "(#{country_data[PhoneData::VALIDATIONS][PhoneData::GENERAL][PhoneData::VALID_PATTERN]})$"
 
