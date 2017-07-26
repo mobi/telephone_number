@@ -2,6 +2,19 @@
 # Any changes made to this file will be overridden next time test data is generated.
 # Please edit TestDataGenerator if you need to add test cases.
 ---
+:AE:
+  '0':
+    :e164_formatted: "+971529933171"
+    :national_formatted: 052 993 3171
+    :international_formatted: "+971 52 993 3171"
+  '1':
+    :e164_formatted: "+971553006144"
+    :national_formatted: 055 300 6144
+    :international_formatted: "+971 55 300 6144"
+  '2':
+    :e164_formatted: "+971551000291"
+    :national_formatted: 055 100 0291
+    :international_formatted: "+971 55 100 0291"
 :AR:
   '0':
     :e164_formatted: "+5491112345678"
@@ -24,6 +37,32 @@
     :e164_formatted: "+61467703037"
     :national_formatted: 0467 703 037
     :international_formatted: "+61 467 703 037"
+:BE:
+  '0':
+    :e164_formatted: "+32498485960"
+    :national_formatted: 0498 48 59 60
+    :international_formatted: "+32 498 48 59 60"
+  '1':
+    :e164_formatted: "+32477702206"
+    :national_formatted: 0477 70 22 06
+    :international_formatted: "+32 477 70 22 06"
+  '2':
+    :e164_formatted: "+32474095692"
+    :national_formatted: 0474 09 56 92
+    :international_formatted: "+32 474 09 56 92"
+:BO:
+  '0':
+    :e164_formatted: "+59178500348"
+    :national_formatted: '78500348'
+    :international_formatted: "+591 78500348"
+  '1':
+    :e164_formatted: "+59178006138"
+    :national_formatted: '78006138'
+    :international_formatted: "+591 78006138"
+  '2':
+    :e164_formatted: "+59178006139"
+    :national_formatted: '78006139'
+    :international_formatted: "+591 78006139"
 :BR:
   '0':
     :e164_formatted: "+5511992339376"
@@ -83,6 +122,19 @@
     :e164_formatted: "+14169158200"
     :national_formatted: "(416) 915-8200"
     :international_formatted: "+1 416-915-8200"
+:CH:
+  '0':
+    :e164_formatted: "+41794173875"
+    :national_formatted: 079 417 38 75
+    :international_formatted: "+41 79 417 38 75"
+  '1':
+    :e164_formatted: "+41795061129"
+    :national_formatted: 079 506 11 29
+    :international_formatted: "+41 79 506 11 29"
+  '2':
+    :e164_formatted: "+41795820985"
+    :national_formatted: 079 582 09 85
+    :international_formatted: "+41 79 582 09 85"
 :CL:
   '0':
     :e164_formatted: "+56961234567"
@@ -140,6 +192,58 @@
     :e164_formatted: "+4915222503070"
     :national_formatted: 01522 2503070
     :international_formatted: "+49 1522 2503070"
+:DK:
+  '0':
+    :e164_formatted: "+4524453744"
+    :national_formatted: 24 45 37 44
+    :international_formatted: "+45 24 45 37 44"
+  '1':
+    :e164_formatted: "+4551622172"
+    :national_formatted: 51 62 21 72
+    :international_formatted: "+45 51 62 21 72"
+  '2':
+    :e164_formatted: "+4542428484"
+    :national_formatted: 42 42 84 84
+    :international_formatted: "+45 42 42 84 84"
+:EC:
+  '0':
+    :e164_formatted: "+593992441504"
+    :national_formatted: 099 244 1504
+    :international_formatted: "+593 99 244 1504"
+  '1':
+    :e164_formatted: "+593984657155"
+    :national_formatted: 098 465 7155
+    :international_formatted: "+593 98 465 7155"
+  '2':
+    :e164_formatted: "+593984015053"
+    :national_formatted: 098 401 5053
+    :international_formatted: "+593 98 401 5053"
+:EE:
+  '0':
+    :e164_formatted: "+37253629280"
+    :national_formatted: 5362 9280
+    :international_formatted: "+372 5362 9280"
+  '1':
+    :e164_formatted: "+37253682997"
+    :national_formatted: 5368 2997
+    :international_formatted: "+372 5368 2997"
+  '2':
+    :e164_formatted: "+37254004517"
+    :national_formatted: 5400 4517
+    :international_formatted: "+372 5400 4517"
+:ES:
+  '0':
+    :e164_formatted: "+34606217800"
+    :national_formatted: 606 21 78 00
+    :international_formatted: "+34 606 21 78 00"
+  '1':
+    :e164_formatted: "+34667751353"
+    :national_formatted: 667 75 13 53
+    :international_formatted: "+34 667 75 13 53"
+  '2':
+    :e164_formatted: "+34646570628"
+    :national_formatted: 646 57 06 28
+    :international_formatted: "+34 646 57 06 28"
 :FR:
   '0':
     :e164_formatted: "+33607114556"
@@ -179,20 +283,24 @@
     :e164_formatted: "+85264636251"
     :national_formatted: 6463 6251
     :international_formatted: "+852 6463 6251"
+:HU:
+  '0':
+    :e164_formatted: "+36709311285"
+    :national_formatted: "(70) 931 1285"
+    :international_formatted: "+36 70 931 1285"
+  '1':
+    :e164_formatted: "+36709311279"
+    :national_formatted: "(70) 931 1279"
+    :international_formatted: "+36 70 931 1279"
+  '2':
+    :e164_formatted: "+36709311206"
+    :national_formatted: "(70) 931 1206"
+    :international_formatted: "+36 70 931 1206"
 :IE:
   '0':
     :e164_formatted: "+353863634875"
     :national_formatted: 086 363 4875
     :international_formatted: "+353 86 363 4875"
-:MX:
-  '0':
-    :e164_formatted: "+524423593227"
-    :national_formatted: 01 442 359 3227
-    :international_formatted: "+52 442 359 3227"
-  '1':
-    :e164_formatted: "+5214423593227"
-    :national_formatted: 044 442 359 3227
-    :international_formatted: "+52 1 442 359 3227"
 :IN:
   '0':
     :e164_formatted: "+915622231515"
@@ -302,6 +410,15 @@
     :e164_formatted: "+919176642499"
     :national_formatted: 091766 42499
     :international_formatted: "+91 91766 42499"
+:IT:
+  '0':
+    :e164_formatted: "+393478258998"
+    :national_formatted: 347 825 8998
+    :international_formatted: "+39 347 825 8998"
+  '2':
+    :e164_formatted: "+393440161350"
+    :national_formatted: 344 016 1350
+    :international_formatted: "+39 344 016 1350"
 :JP:
   '0':
     :e164_formatted: "+81312345678"
@@ -311,11 +428,198 @@
     :e164_formatted: "+819012345678"
     :national_formatted: 090-1234-5678
     :international_formatted: "+81 90-1234-5678"
+:KR:
+  '0':
+    :e164_formatted: "+821036424812"
+    :national_formatted: 010-3642-4812
+    :international_formatted: "+82 10-3642-4812"
+  '1':
+    :e164_formatted: "+821053812833"
+    :national_formatted: 010-5381-2833
+    :international_formatted: "+82 10-5381-2833"
+  '2':
+    :e164_formatted: "+821085894820"
+    :national_formatted: 010-8589-4820
+    :international_formatted: "+82 10-8589-4820"
+:MX:
+  '0':
+    :e164_formatted: "+524423593227"
+    :national_formatted: 01 442 359 3227
+    :international_formatted: "+52 442 359 3227"
+  '1':
+    :e164_formatted: "+5214423593227"
+    :national_formatted: 044 442 359 3227
+    :international_formatted: "+52 1 442 359 3227"
+:NL:
+  '0':
+    :e164_formatted: "+31610958780"
+    :national_formatted: 06 10958780
+    :international_formatted: "+31 6 10958780"
+  '1':
+    :e164_formatted: "+31610000852"
+    :national_formatted: 06 10000852
+    :international_formatted: "+31 6 10000852"
+  '2':
+    :e164_formatted: "+31611427604"
+    :national_formatted: 06 11427604
+    :international_formatted: "+31 6 11427604"
+:NO:
+  '0':
+    :e164_formatted: "+4792272668"
+    :national_formatted: 922 72 668
+    :international_formatted: "+47 922 72 668"
+  '1':
+    :e164_formatted: "+4797065876"
+    :national_formatted: 970 65 876
+    :international_formatted: "+47 970 65 876"
+  '2':
+    :e164_formatted: "+4792466013"
+    :national_formatted: 924 66 013
+    :international_formatted: "+47 924 66 013"
+:NZ:
+  '0':
+    :e164_formatted: "+64212715077"
+    :national_formatted: 021 271 5077
+    :international_formatted: "+64 21 271 5077"
+  '1':
+    :e164_formatted: "+6421577017"
+    :national_formatted: 021 577 017
+    :international_formatted: "+64 21 577 017"
+  '2':
+    :e164_formatted: "+64212862111"
+    :national_formatted: 021 286 2111
+    :international_formatted: "+64 21 286 2111"
+:PE:
+  '0':
+    :e164_formatted: "+51994156035"
+    :national_formatted: 994 156 035
+    :international_formatted: "+51 994 156 035"
+  '1':
+    :e164_formatted: "+51987527881"
+    :national_formatted: 987 527 881
+    :international_formatted: "+51 987 527 881"
+  '2':
+    :e164_formatted: "+51972737259"
+    :national_formatted: 972 737 259
+    :international_formatted: "+51 972 737 259"
+:PH:
+  '0':
+    :e164_formatted: "+639285588185"
+    :national_formatted: 0928 558 8185
+    :international_formatted: "+63 928 558 8185"
+  '1':
+    :e164_formatted: "+639285588262"
+    :national_formatted: 0928 558 8262
+    :international_formatted: "+63 928 558 8262"
+  '2':
+    :e164_formatted: "+639285548190"
+    :national_formatted: 0928 554 8190
+    :international_formatted: "+63 928 554 8190"
+:PL:
+  '0':
+    :e164_formatted: "+48665666003"
+    :national_formatted: 665 666 003
+    :international_formatted: "+48 665 666 003"
+  '1':
+    :e164_formatted: "+48885882321"
+    :national_formatted: 885 882 321
+    :international_formatted: "+48 885 882 321"
+  '2':
+    :e164_formatted: "+48885889958"
+    :national_formatted: 885 889 958
+    :international_formatted: "+48 885 889 958"
+:QA:
+  '0':
+    :e164_formatted: "+97470482288"
+    :national_formatted: 7048 2288
+    :international_formatted: "+974 7048 2288"
+  '1':
+    :e164_formatted: "+97474798678"
+    :national_formatted: 7479 8678
+    :international_formatted: "+974 7479 8678"
+:RO:
+  '0':
+    :e164_formatted: "+40724242563"
+    :national_formatted: 0724 242 563
+    :international_formatted: "+40 724 242 563"
+  '1':
+    :e164_formatted: "+40727798526"
+    :national_formatted: 0727 798 526
+    :international_formatted: "+40 727 798 526"
+  '2':
+    :e164_formatted: "+40727735377"
+    :national_formatted: 0727 735 377
+    :international_formatted: "+40 727 735 377"
+:SA:
+  '0':
+    :e164_formatted: "+966503891468"
+    :national_formatted: 050 389 1468
+    :international_formatted: "+966 50 389 1468"
+  '1':
+    :e164_formatted: "+966501543349"
+    :national_formatted: 050 154 3349
+    :international_formatted: "+966 50 154 3349"
+  '2':
+    :e164_formatted: "+966500939012"
+    :national_formatted: 050 093 9012
+    :international_formatted: "+966 50 093 9012"
+:SE:
+  '0':
+    :e164_formatted: "+46708922920"
+    :national_formatted: 070-892 29 20
+    :international_formatted: "+46 70 892 29 20"
+  '1':
+    :e164_formatted: "+46723985268"
+    :national_formatted: 072-398 52 68
+    :international_formatted: "+46 72 398 52 68"
+  '2':
+    :e164_formatted: "+46761001966"
+    :national_formatted: 076-100 19 66
+    :international_formatted: "+46 76 100 19 66"
 :SG:
   '0':
     :e164_formatted: "+6596924755"
     :national_formatted: 9692 4755
     :international_formatted: "+65 9692 4755"
+:TR:
+  '0':
+    :e164_formatted: "+905497728782"
+    :national_formatted: 0549 772 87 82
+    :international_formatted: "+90 549 772 87 82"
+  '1':
+    :e164_formatted: "+905497728780"
+    :national_formatted: 0549 772 87 80
+    :international_formatted: "+90 549 772 87 80"
+  '2':
+    :e164_formatted: "+905497728781"
+    :national_formatted: 0549 772 87 81
+    :international_formatted: "+90 549 772 87 81"
+:TT:
+  '0':
+    :e164_formatted: "+18687804765"
+    :national_formatted: "(868) 780-4765"
+    :international_formatted: "+1 868-780-4765"
+  '1':
+    :e164_formatted: "+18687804843"
+    :national_formatted: "(868) 780-4843"
+    :international_formatted: "+1 868-780-4843"
+  '2':
+    :e164_formatted: "+18687804752"
+    :national_formatted: "(868) 780-4752"
+    :international_formatted: "+1 868-780-4752"
+:TW:
+  '0':
+    :e164_formatted: "+886905627933"
+    :national_formatted: 0905 627 933
+    :international_formatted: "+886 905 627 933"
+  '1':
+    :e164_formatted: "+886905627901"
+    :national_formatted: 0905 627 901
+    :international_formatted: "+886 905 627 901"
+  '2':
+    :e164_formatted: "+886905627925"
+    :national_formatted: 0905 627 925
+    :international_formatted: "+886 905 627 925"
 :US:
   '0':
     :e164_formatted: "+16502530000"
@@ -389,3 +693,29 @@
     :e164_formatted: "+13175082333"
     :national_formatted: "(317) 508-2333"
     :international_formatted: "+1 317-508-2333"
+:VE:
+  '0':
+    :e164_formatted: "+584149993108"
+    :national_formatted: 0414-9993108
+    :international_formatted: "+58 414-9993108"
+  '1':
+    :e164_formatted: "+584248407260"
+    :national_formatted: 0424-8407260
+    :international_formatted: "+58 424-8407260"
+  '2':
+    :e164_formatted: "+584248271518"
+    :national_formatted: 0424-8271518
+    :international_formatted: "+58 424-8271518"
+:ZA:
+  '0':
+    :e164_formatted: "+27826187617"
+    :national_formatted: 082 618 7617
+    :international_formatted: "+27 82 618 7617"
+  '1':
+    :e164_formatted: "+27823014578"
+    :national_formatted: 082 301 4578
+    :international_formatted: "+27 82 301 4578"
+  '2':
+    :e164_formatted: "+27828840632"
+    :national_formatted: 082 884 0632
+    :international_formatted: "+27 82 884 0632"

@@ -3,6 +3,14 @@
     :e164_formatted: "+11305555555"
     :national_formatted:  "11305555555"
     :international_formatted: "11305555555"
+  '2':
+    :e164_formatted: "+11305555555555"
+    :national_formatted:  "11305555555555"
+    :international_formatted: "11305555555555"
+  '3':
+    :e164_formatted: "+1"
+    :national_formatted:  "1"
+    :international_formatted: "1"
 :GB:
   '1':
     :e164_formatted: "+44987654321654"

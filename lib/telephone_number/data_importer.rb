@@ -33,7 +33,7 @@ module TelephoneNumber
         {}.tap do |fhash|
           format.attributes.values.each do |attr|
             key = underscore(attr.name).to_sym
-            fhash[key] = if key == PhoneData::NATIONAL_PREFIX_FORMATTING_RULE
+            fhash[key] = if key == :national_prefix_formatting_rule
                            attr.value
                          else
                            attr.value.delete("\n ")
@@ -41,30 +41,30 @@ module TelephoneNumber
           end
           format.elements.each do |child|
             key = underscore(child.name).to_sym
-            fhash[key] = [PhoneData::FORMAT, PhoneData::INTL_FORMAT].include?(key) ? child.text : child.text.delete("\n ")
+            fhash[key] = [:format, :intl_format].include?(key) ? child.text : child.text.delete("\n ")
           end
         end
       end
 
       return if override && formats_arr.empty?
-      country_data[PhoneData::FORMATS] = formats_arr
+      country_data[:formats] = formats_arr
     end
 
     def load_validations(country_data, territory)
-      country_data[PhoneData::VALIDATIONS] = {}
+      country_data[:validations] = {}
       territory.elements.each do |element|
         next if element.name == 'references' || element.name == 'availableFormats'
-        country_data[PhoneData::VALIDATIONS][underscore(element.name).to_sym] = {}.tap do |validation_hash|
+        country_data[:validations][underscore(element.name).to_sym] = {}.tap do |validation_hash|
           element.elements.each { |child| validation_hash[underscore(child.name).to_sym] = child.text.delete("\n ") }
         end
       end
-      country_data.delete(PhoneData::VALIDATIONS) if country_data[PhoneData::VALIDATIONS].empty? && override
+      country_data.delete(:validations) if country_data[:validations].empty? && override
     end
 
     def load_base_attributes(country_data, territory)
       territory.attributes.each do |key, value_object|
         underscored_key = underscore(key).to_sym
-        country_data[underscored_key] = if underscored_key == PhoneData::NATIONAL_PREFIX_FOR_PARSING
+        country_data[underscored_key] = if underscored_key == :national_prefix_for_parsing
                                           value_object.value.delete("\n ")
                                         else
                                           value_object.value
