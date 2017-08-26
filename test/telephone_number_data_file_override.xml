@@ -98,7 +98,7 @@
                nationalPrefixForParsing="0(?:(1[245]|2[1-35]|31|4[13]|[56]5|99)(\d{10,11}))?"
                nationalPrefixTransformRule="$2" mobileNumberPortableRegion="true">
       <dumpLine>
-        <nationalNumberPattern>(?:21|22|24|26)\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>81</nationalNumberPattern>
         <possibleLengths national="9"/>
         <exampleNumber>701234567</exampleNumber>
       </dumpLine>

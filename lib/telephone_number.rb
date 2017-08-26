@@ -1,6 +1,7 @@
 require 'telephone_number/version'
 require 'utilities/hash'
 require 'forwardable'
+require 'active_model/telephone_number_validator' if defined?(ActiveModel)
 
 module TelephoneNumber
   autoload :DataImporter,      'telephone_number/data_importer'

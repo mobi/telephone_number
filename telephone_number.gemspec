@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'nokogiri'
   spec.add_development_dependency 'httparty'
+  spec.add_development_dependency 'activemodel', '>= 4.0'
   spec.add_development_dependency 'minitest-focus'
   spec.add_development_dependency 'coveralls'
 end
