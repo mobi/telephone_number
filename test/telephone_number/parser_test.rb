@@ -34,7 +34,7 @@ module TelephoneNumber
 
     # This number is only valid bc of our data override file
     def test_override_file_correctly_validates
-      number_obj = TelephoneNumber.parse('248596987', :br)
+      number_obj = TelephoneNumber.parse('81', :br)
       assert number_obj.valid?
       assert_includes number_obj.valid_types, :dump_line
     end
