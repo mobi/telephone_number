@@ -1,4 +1,5 @@
 require "test_helper"
+require "ostruct"
 
 module TelephoneNumber
   class ParserTest < Minitest::Test
@@ -7,44 +8,40 @@ module TelephoneNumber
       @invalid_numbers = YAML.load_file('test/invalid_numbers.yml')
     end
 
-    def test_validate_numbers_for_valid_numbers_in_countries
+    def test_valid_types_is_not_empty_when_valid
       @valid_numbers.each do |country, number_object|
+        country_obj = Country.find(country)
         number_object.each do |_name, number_data|
           number_data.each do |_type, number|
-            refute_predicate TelephoneNumber.parse(number, country).valid_types, :empty?
+            phone_obj = OpenStruct.new(original_number: number.gsub(/\D/, ''), country: country_obj)
+            parser = TelephoneNumber::Parser.new(phone_obj)
+            refute_predicate parser.valid_types, :empty?
+            assert parser.valid?
           end
         end
       end
     end
 
-    def test_validate_numbers_for_invalid_numbers_in_countries
-      @invalid_numbers.each do |country, number_object|
-        number_object.each do |_name, number_data|
-          number_data.each do |_type, number|
-            assert_predicate TelephoneNumber.parse(number, country).valid_types, :empty?
-          end
-        end
-      end
+    def test_valid_types_returns_correct_list
+      phone_obj = OpenStruct.new(original_number: "3175082203", country: Country.find(:us))
+      assert_equal [:fixed_line, :mobile], TelephoneNumber::Parser.new(phone_obj).valid_types
     end
 
     def test_valid_types_is_empty_for_blank_input
-      inputs = [[nil, nil], [nil, :us], ['3175083385', nil]]
-      inputs.each { |number, country| assert TelephoneNumber.invalid?(number, country)}
+      [["", nil], ["", :us], ['3175083385', nil]].each do |number, country|
+        phone_obj = OpenStruct.new(original_number: number, country: Country.find(country))
+        parser = TelephoneNumber::Parser.new(phone_obj)
+        refute parser.valid?
+        assert_predicate parser.valid_types, :empty?
+      end
     end
 
     # This number is only valid bc of our data override file
     def test_override_file_correctly_validates
-      number_obj = TelephoneNumber.parse('81', :br)
-      assert number_obj.valid?
-      assert_includes number_obj.valid_types, :dump_line
-    end
-
-    def test_detect_country_for_numbers
-      @valid_numbers.each do |country, number_object|
-        number_object.each do |_name, number_data|
-          assert_equal country, TelephoneNumber::Parser.detect_country(number_data[:e164_formatted])
-        end
-      end
+      phone_obj = OpenStruct.new(original_number: '81', country: Country.find(:br))
+      parser = TelephoneNumber::Parser.new(phone_obj)
+      assert parser.valid?
+      assert_includes parser.valid_types, :dump_line
     end
   end
 end

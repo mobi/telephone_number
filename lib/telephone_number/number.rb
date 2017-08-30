@@ -2,15 +2,16 @@ module TelephoneNumber
   class Number
     extend Forwardable
 
-    attr_reader :phone_data, :parser, :formatter
+    attr_reader :country, :parser, :formatter, :original_number
 
     delegate [:valid?, :valid_types, :normalized_number] => :parser
     delegate [:national_number, :e164_number, :international_number] => :formatter
 
     def initialize(number, country)
-      @phone_data = PhoneData.new(country)
-      @parser = Parser.new(number, @phone_data)
-      @formatter = Formatter.new(self, @phone_data)
+      @original_number = number
+      @country = Country.find(country)
+      @parser = Parser.new(self)
+      @formatter = Formatter.new(self)
     end
   end
 end
