@@ -26,7 +26,30 @@ Or install it yourself as:
 
     $ gem install telephone_number
 
-## Usage
+## Rails Validation
+
+`validates :my_attribute_name, telephone_number: {country: proc{|record| record.country}, types: [:fixed_line, :mobile, etc]}`
+
+#### Valid Phone Types
+- `:area_code_optional`
+- `:fixed_line`
+- `:mobile`
+- `:no_international_dialling`
+- `:pager`
+- `:personal_number`
+- `:premium_rate`
+- `:shared_cost`
+- `:toll_free`
+- `:uan`
+- `:voicemail`
+- `:voip`
+
+#### Country
+
+- In this example, `record.country` must yield a valid two letter country code such as `:us` or `:ca`
+
+
+## Manual Usage
 
 You can obtain a `TelephoneNumber` object by calling: 
 
@@ -73,13 +96,15 @@ After that you have the following instance methods available to you.
   
 - ### `country`
   
-  Returns a symbol representation of the ISO 3166-1 alpha-2 for the country. 
+  Returns an object containing data related a the number's country.
   
-  `phone_object.country ==> :US`
-  
-- ### `country_data`
-
-  Returns a symbolized hash of all data TelephoneNumber has about a number's particular country. 
+  ```
+  phone_object.country ===> 
+   #<TelephoneNumber::Country:0x007fb976267410
+   @country_code="1",
+   @country_id="US",
+   ...
+  ```
   
 ### Class Methods
   
@@ -152,11 +177,6 @@ phone_object = TelephoneNumber.parse(invalid_number, :US)
 phone_object.national_number ==> "(111) 111-1111"
 ```
     
-## Todo
-
-- Build custom validator to integrate with Rails
-- ~~Build formatting functionality~~
-- Build extended data functionality(short codes, carrier data, etc.)
 
 ## Development
 
