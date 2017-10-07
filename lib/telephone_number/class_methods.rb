@@ -25,7 +25,7 @@ module TelephoneNumber
 
     # generates binary file from xml that user gives us
     def generate_override_file(file)
-      DataImporter.new(file, override: true).import!
+      PhoneDataImporter.new(file, override: true).import!
     end
   end
 end

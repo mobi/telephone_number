@@ -14,13 +14,13 @@ task :default => :test
 namespace :data do
   namespace :main do
     task :import  do
-      TelephoneNumber::DataImporter.new(File.expand_path('data/telephone_number_data_file.xml')).import!
+      TelephoneNumber::PhoneDataImporter.new(File.expand_path('data/telephone_number_data_file.xml')).import!
     end
   end
 
   namespace :test do
     task :import  do
-      TelephoneNumber::TestDataGenerator.import!
+      TelephoneNumber::TestDataImporter.import!
     end
   end
 end

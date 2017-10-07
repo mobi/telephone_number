@@ -4,7 +4,7 @@ module TelephoneNumber
                 :national_prefix_for_parsing, :national_prefix_transform_rule, :international_prefix,
                 :formats, :validations, :mobile_token, :country_id, :general_validation, :main_country_for_code
 
-    MOBILE_TOKEN_COUNTRIES = { AR: '9' }
+    MOBILE_TOKEN_COUNTRIES = { AR: '9' }.freeze
 
     def initialize(data_hash)
       @country_code = data_hash[:country_code]
