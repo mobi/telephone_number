@@ -7,11 +7,11 @@ module TelephoneNumber
       @default_format_pattern = Regexp.new(format_string)
     end
 
-    def parse(number, country = detect_country(number))
+    def parse(number, country = nil)
       TelephoneNumber::Number.new(sanitize(number), country)
     end
 
-    def valid?(number, country = detect_country(number), keys = [])
+    def valid?(number, country = nil, keys = [])
       parse(number, country).valid?(keys)
     end
 
@@ -21,15 +21,6 @@ module TelephoneNumber
 
     def sanitize(input_number)
       input_number.to_s.gsub(/\D/, '')
-    end
-
-    def detect_country(number)
-      sanitized_number = sanitize(number)
-      detected_country = Country.all_countries.detect do |country|
-        sanitized_number.start_with?(country.country_code) && valid?(sanitized_number, country.country_id)
-      end
-
-      detected_country.country_id.to_sym if detected_country
     end
 
     # generates binary file from xml that user gives us
