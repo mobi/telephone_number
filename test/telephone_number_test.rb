@@ -35,14 +35,6 @@ class TelephoneNumberTest < Minitest::Test
     assert_equal "123", TelephoneNumber.sanitize("abc123")
   end
 
-  def test_detect_country_for_numbers
-    @valid_numbers.each do |country, number_object|
-      number_object.each do |_name, number_data|
-        assert_equal country, TelephoneNumber.detect_country(number_data[:e164_formatted])
-      end
-    end
-  end
-
   def test_valid_formatted_national_number_for_countries
     @valid_numbers.each do |country, number_object|
       number_object.values.each do |number_data|
@@ -85,10 +77,6 @@ class TelephoneNumberTest < Minitest::Test
     assert_equal '+5581', number_obj.e164_number
   end
 
-  def test_detect_country_returns_nil_if_country_not_found
-    assert_nil TelephoneNumber.detect_country("1")
-  end
-
   def test_returns_empty_string_if_input_is_nil
     country_inputs = [nil, '', :us]
     number_inputs = [nil, '']
@@ -97,16 +85,6 @@ class TelephoneNumberTest < Minitest::Test
     country_inputs.product(number_inputs, methods).each do |country, number, method|
       assert_equal '', TelephoneNumber.parse(number, country).public_send(method)
     end
-  end
-
-  def test_valid_types_with_invalid_country_returns_false
-    assert_predicate TelephoneNumber.parse("448444156790", "NOTREAL").valid_types, :empty?
-  end
-
-  def test_returns_original_string_when_country_is_nil
-    assert_equal '13175082205', TelephoneNumber.parse('13175082205', nil).international_number
-    assert_equal '13175082205', TelephoneNumber.parse('13175082205', nil).national_number
-    assert_equal '13175082205', TelephoneNumber.parse('13175082205', nil).e164_number
   end
 
   def test_invalid_numbers_go_to_default_pattern
