@@ -111,7 +111,7 @@ After that you have the following instance methods available to you.
 
   `phone_object.location ==> "Indiana"`
 
-  `TelephoneNumber.parse('+8222123456').location(:ja) ==> "ソウル特別市"`
+  `phone_object.location(:ja) ==> "ソウル特別市"`
 
 ### Class Methods
 
