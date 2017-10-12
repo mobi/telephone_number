@@ -105,15 +105,13 @@ After that you have the following instance methods available to you.
    ...
   ```
 
-- ### `location(:en)`
+- ### `location`
 
-  Returns the geolocation of the number.
-
-  `phone_object.location(:en) ==> "Indiana"`
-
-  If the locale is invalid or one is not passed, it will default to `:en`
+  Returns the location of the number. Default locale is `:en`
 
   `phone_object.location ==> "Indiana"`
+
+  `TelephoneNumber.parse('+8222123456').location(:ja) ==> "ソウル特別市"`
 
 ### Class Methods
 
