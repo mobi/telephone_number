@@ -42,7 +42,7 @@ module TelephoneNumber
     end
 
     def geocoding_path(locale)
-      path = File.join('data', 'geocoding', locale.to_s, '*.dat')
+      path = File.expand_path("../../../data/geocoding/#{locale}/*.dat", __FILE__)
       Dir.glob(path)
     end
 
