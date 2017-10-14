@@ -1,6 +1,6 @@
 module TelephoneNumber
   class GeoLocator
-    attr_accessor :phone_number, :normalized_number, :location, :locale
+    attr_reader :phone_number, :normalized_number, :location, :locale
 
     # initialize with a phone_number object
     def initialize(phone_number, locale)
@@ -10,7 +10,6 @@ module TelephoneNumber
     end
 
     def location
-      return unless phone_number.valid?
       @location ||= find_location
     end
 

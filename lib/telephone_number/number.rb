@@ -2,7 +2,7 @@ module TelephoneNumber
   class Number
     extend Forwardable
 
-    attr_reader :country, :parser, :formatter, :original_number, :geo_locator
+    attr_reader :country, :parser, :formatter, :original_number, :geo_locator, :time_zone_detector
 
     delegate [:valid?, :valid_types, :normalized_number] => :parser
     delegate [:national_number, :e164_number, :international_number] => :formatter
@@ -15,8 +15,15 @@ module TelephoneNumber
     end
 
     def location(locale = :en)
+      return if !country || !valid?
       @geo_locator ||= GeoLocator.new(self, locale)
       @geo_locator.location
+    end
+
+    def timezone
+      return if !country || !valid?
+      @time_zone_detector ||= TimeZoneDetector.new(self)
+      @time_zone_detector.detect_timezone
     end
 
     private
