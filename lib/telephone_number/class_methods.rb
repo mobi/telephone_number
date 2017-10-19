@@ -8,7 +8,7 @@ module TelephoneNumber
     end
 
     def parse(number, country = nil)
-      TelephoneNumber::Number.new(sanitize(number), country)
+      TelephoneNumber::Number.new(number, country)
     end
 
     def valid?(number, country = nil, keys = [])
