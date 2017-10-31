@@ -18,6 +18,18 @@ namespace :data do
     end
   end
 
+  namespace :timezone do
+    task :import do
+      TelephoneNumber::TimeZoneDataImporter.load_data!
+    end
+  end
+
+  namespace :geolocation do
+    task :import do
+      TelephoneNumber::GeoLocationDataImporter.load_data!
+    end
+  end
+
   namespace :test do
     task :import  do
       TelephoneNumber::TestDataImporter.import!
