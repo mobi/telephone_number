@@ -10,7 +10,6 @@ module TelephoneNumber
       assert_equal /011/, country.international_prefix
       assert_equal 2, country.formats.count
       assert_equal 5, country.validations.count
-      assert_nil country.national_prefix_formatting_rule
       assert_nil country.national_prefix_for_parsing
       assert_nil country.national_prefix_transform_rule
       assert_nil country.mobile_token
