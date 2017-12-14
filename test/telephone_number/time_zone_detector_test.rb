@@ -13,7 +13,7 @@ module TelephoneNumber
       assert_equal 'America/Toronto', TelephoneNumber.parse('+16135550119').timezone
       assert_equal 'Europe/Zurich', TelephoneNumber.parse('+41794173875').timezone
       assert_equal 'America/Santiago', TelephoneNumber.parse('+56961234567').timezone
-      assert_equal 'Asia/Shanghai, Asia/Urumqi', TelephoneNumber.parse('+8615694876068').timezone
+      assert_equal 'Asia/Shanghai', TelephoneNumber.parse('+8615694876068').timezone
       assert_equal 'America/Bogota', TelephoneNumber.parse('+573211234567').timezone
       assert_equal 'America/Costa_Rica', TelephoneNumber.parse('+50622123456').timezone
       assert_equal 'Europe/Berlin', TelephoneNumber.parse('+4915222503070').timezone

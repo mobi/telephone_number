@@ -1,3 +1,24 @@
+# Copyright (C) 2011 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# Internal statistics data (2013-11-28).
+# Bahamas data comes from the ITU document:
+# http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000100001PDFE.pdf with the
+# addition of 242601 and 242602, from the homepage of Cable Bahamas
+# http://www.cablebahamas.com/?p=n&sectid=5&catid=104.
+
 1201|New Jersey
 1201200|Jersey City, NJ
 1201216|Jersey City, NJ
@@ -2710,7 +2731,7 @@
 1242326|New Providence
 1242327|New Providence
 1242328|New Providence
-1242329|North Andros
+1242329|Andros
 1242331|Rum Cay & San Sal
 1242332|Eleuthera
 1242333|Eleuthera
@@ -2723,7 +2744,7 @@
 1242340|New Providence
 1242341|New Providence
 1242342|Cat Island
-1242344|Acklins
+1242344|Ragged Island/Crooked Island/Acklins
 1242345|Exuma
 1242346|Grand Bahama
 1242347|Bimini and Cat Cay
@@ -2761,14 +2782,15 @@
 1242396|New Providence
 1242397|New Providence
 1242461|New Providence
+1242502|New Providence
 1242601|New Providence
 1242602|Grand Bahama
 1242676|New Providence
 1242677|New Providence
 1242687|Grand Bahama
 1242688|Grand Bahama
-1242698|Abaco
-1242699|Abaco
+1242698|New Providence
+1242699|Abaco/Eleuthera
 1242702|New Providence
 1248|Michigan
 1248208|Southfield, MI
@@ -24744,6 +24766,7 @@
 1724966|Carmichaels, PA
 1724981|Hermitage, PA
 1725|Nevada
+1726|San Antonio, TX
 1727|Florida
 1727298|Clearwater, FL
 1727321|St. Petersburg, FL
