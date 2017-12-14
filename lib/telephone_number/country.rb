@@ -1,26 +1,25 @@
 module TelephoneNumber
   class Country
-    attr_reader :country_code, :national_prefix, :national_prefix_formatting_rule,
-                :national_prefix_for_parsing, :national_prefix_transform_rule, :international_prefix,
-                :formats, :validations, :mobile_token, :country_id, :general_validation, :main_country_for_code
+    attr_reader :country_code, :national_prefix, :national_prefix_for_parsing,
+                :national_prefix_transform_rule, :international_prefix, :formats,
+                :validations, :mobile_token, :country_id, :general_validation, :main_country_for_code
 
     MOBILE_TOKEN_COUNTRIES = { AR: '9' }.freeze
 
     def initialize(data_hash)
       @country_code = data_hash[:country_code]
       @country_id = data_hash[:id]
-      @formats = data_hash.fetch(:formats, []).map { |format| NumberFormat.new(format) }
       @general_validation = NumberValidation.new(:general_desc, data_hash[:validations][:general_desc]) if data_hash.fetch(:validations, {})[:general_desc]
       @international_prefix = Regexp.new(data_hash[:international_prefix]) if data_hash[:international_prefix]
       @main_country_for_code = data_hash[:main_country_for_code] == 'true'
       @mobile_token = MOBILE_TOKEN_COUNTRIES[@country_id.to_sym]
       @national_prefix = data_hash[:national_prefix]
-      @national_prefix_formatting_rule = data_hash[:national_prefix_formatting_rule]
       @national_prefix_for_parsing = Regexp.new(data_hash[:national_prefix_for_parsing]) if data_hash[:national_prefix_for_parsing]
       @national_prefix_transform_rule = data_hash[:national_prefix_transform_rule]
       @validations = data_hash.fetch(:validations, {})
                               .except(:general_desc, :area_code_optional)
                               .map { |name, data| NumberValidation.new(name, data) }
+      @formats = data_hash.fetch(:formats, []).map { |format| NumberFormat.new(format, data_hash[:national_prefix_formatting_rule]) }
     end
 
     def detect_format(number)
