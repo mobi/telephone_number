@@ -112,6 +112,12 @@ After that you have the following instance methods available to you.
   `phone_object.location ==> "Indiana"`
 
   `phone_object.location(:ja) ==> "ソウル特別市"`
+  
+- ### `timezone`
+
+  Returns the time zone of the number. 
+
+  `phone_object.location ==> "America/New_York"`
 
 ### Class Methods
 
