@@ -24,6 +24,10 @@ class ModelTest < Minitest::Test
     validates :phone_number, telephone_number: { country: 'US' }
   end
 
+  class CountryValidationWithArray < BasicModel
+    validates :phone_number, telephone_number: { country: [:us] }
+  end
+
   class ValidationWithTypes < BasicModel
     validates :phone_number, telephone_number: { country: proc{ |record| record.country }, types: [:toll_free] }
   end
@@ -49,6 +53,12 @@ class ModelTest < Minitest::Test
       validation2 = klass.new(phone_number: nil)
       assert validation2.invalid?
       assert_includes validation2.errors, :phone_number
+    end
+  end
+
+  def test_with_invalid_option_for_country
+    assert_raises ArgumentError do
+      CountryValidationWithArray.new('424324543645').valid?
     end
   end
 
