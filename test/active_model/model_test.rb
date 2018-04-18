@@ -58,7 +58,7 @@ class ModelTest < Minitest::Test
 
   def test_with_invalid_option_for_country
     assert_raises ArgumentError do
-      CountryValidationWithArray.new('424324543645').valid?
+      CountryValidationWithArray.new(phone_number: '424324543645').valid?
     end
   end
 
