@@ -16,6 +16,8 @@ class TelephoneNumberValidator < ActiveModel::EachValidator
     elsif country_option.is_a?(Symbol) || country_option.is_a?(String)
       # make sure its a lowercase symbol
       country_option.downcase.to_sym
+    else
+      raise ArgumentError.new('country option must be a Proc, Symbol or String')
     end
   end
 end

@@ -46,7 +46,8 @@ Or install it yourself as:
 
 #### Country
 
-- In this example, `record.country` must yield a valid two letter country code such as `:us` or `:ca`
+- In this example, `record.country` must yield a valid two letter country code such as `:us`, `:ca` or `'DE'`
+- You can also just pass a `String` or `Symbol` instead of a `Proc`.
 
 ## Manual Usage
 
