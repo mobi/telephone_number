@@ -12,16 +12,18 @@ class ModelTest < Minitest::Test
     end
   end
 
+  ERR_MESSAGE = 'This is not a valid telephone number!'
+
   class BasicValidation < BasicModel
-    validates :phone_number, telephone_number: { country: proc{ |record| record.country } }
+    validates :phone_number, telephone_number: { country: proc{ |record| record.country }, message: ERR_MESSAGE }
   end
 
   class CountryValidationWithSymbol < BasicModel
-    validates :phone_number, telephone_number: { country: :us }
+    validates :phone_number, telephone_number: { country: :us, message: ERR_MESSAGE }
   end
 
   class CountryValidationWithString < BasicModel
-    validates :phone_number, telephone_number: { country: 'US' }
+    validates :phone_number, telephone_number: { country: 'US', message: ERR_MESSAGE }
   end
 
   class CountryValidationWithArray < BasicModel
@@ -31,7 +33,6 @@ class ModelTest < Minitest::Test
   class ValidationWithTypes < BasicModel
     validates :phone_number, telephone_number: { country: proc{ |record| record.country }, types: [:toll_free] }
   end
-
 
   class AllowBlankOption < BasicModel
     validates :phone_number, telephone_number: { country: proc{ |record| record.country } }, allow_blank: true
@@ -44,15 +45,16 @@ class ModelTest < Minitest::Test
     end
 
     basic_classes.each do |klass|
-      validation1 = klass.new(phone_number: '8')
-      assert validation1.invalid?
-      assert_includes validation1.errors, :phone_number
+      validation = klass.new(phone_number: '8')
+      assert validation.invalid?
+      assert_includes validation.errors, :phone_number
     end
 
     basic_classes.each do |klass|
-      validation2 = klass.new(phone_number: nil)
-      assert validation2.invalid?
-      assert_includes validation2.errors, :phone_number
+      validation = klass.new(phone_number: nil)
+      assert validation.invalid?
+      assert_includes validation.errors, :phone_number
+      assert_equal validation.errors[:phone_number].first, ERR_MESSAGE
     end
   end
 
