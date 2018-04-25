@@ -41,7 +41,7 @@ module TelephoneNumber
 
       if number_format.national_prefix_formatting_rule
         national_prefix_string = number_format.national_prefix_formatting_rule.dup
-        national_prefix_string.gsub!(/\$NP/, country.national_prefix)
+        national_prefix_string.gsub!(/\$NP/, country.national_prefix.to_s)
         national_prefix_string.gsub!(/\$FG/, captures[0])
         formatted_string.sub!(captures[0], national_prefix_string)
       end

@@ -138,7 +138,7 @@
 :CL:
   '0':
     :e164_formatted: "+56961234567"
-    :national_formatted: 09 6123 4567
+    :national_formatted: 9 6123 4567
     :international_formatted: "+56 9 6123 4567"
   '1':
     :e164_formatted: "+56221234567"
