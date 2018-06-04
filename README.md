@@ -118,7 +118,7 @@ After that you have the following instance methods available to you.
 
   Returns the time zone of the number. 
 
-  `phone_object.location ==> "America/New_York"`
+  `phone_object.timezone ==> "America/New_York"`
 
 ### Class Methods
 
