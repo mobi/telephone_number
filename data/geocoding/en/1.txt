@@ -8029,6 +8029,7 @@
 1337993|Lafayette, LA
 1339|Massachusetts
 1343|Ontario
+1345|Cayman Islands
 1345949|George Town
 1346|Texas
 1347|New York
@@ -12376,6 +12377,7 @@
 1443944|Salisbury, MD
 1443949|Annapolis, MD
 1443977|Baltimore, MD
+1445|Philadelphia
 1450|Quebec
 1450218|Vaudreuil-Dorion, QC
 1450224|Prévost, QC
@@ -29167,6 +29169,7 @@
 1819983|Saint-André-Avellin, QC
 1819985|Thurso, QC
 1819986|Gatineau, QC
+1820|California
 1825|Alberta
 1828|North Carolina
 1828210|Asheville, NC
@@ -35842,6 +35845,7 @@
 1973992|Livingston, NJ
 1973993|Morristown, NJ
 1973994|Livingston, NJ
+1975|Missouri
 1978|Massachusetts
 1978208|Lawrence, MA
 1978232|Beverly, MA

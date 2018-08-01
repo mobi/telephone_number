@@ -12,7 +12,7 @@ module TelephoneNumber
 
     def test_returns_correct_area
       assert_equal 'Carmel, IN', TelephoneNumber.parse('13175827767').location # US
-      assert_equal 'Verónica, Buenos Aires', TelephoneNumber.parse('+5492221234567').location # Argentina
+      assert_equal 'Magdalena/Verónica, Buenos Aires', TelephoneNumber.parse('+5492221234567').location # Argentina
       assert_equal 'Buenos Aires', TelephoneNumber.parse('+541112345678').location # Argentina, no mobile_token
       assert_equal 'São Paulo', TelephoneNumber.parse('+5511992339376').location # Brazil
       assert_equal 'Grodno', TelephoneNumber.parse('+375152450911').location # Belarus
@@ -27,7 +27,7 @@ module TelephoneNumber
 
     def test_returns_correct_locale
       # Argentina, no mobile_token
-      assert_equal 'Ciudad Autónoma de Buenos Aires', TelephoneNumber.parse('+541112345678').location(:es)
+      assert_equal 'Buenos Aires', TelephoneNumber.parse('+541112345678').location(:es)
       assert_equal 'ソウル特別市', TelephoneNumber.parse('+8222123456').location(:ja)
     end
   end
