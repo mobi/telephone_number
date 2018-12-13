@@ -11,7 +11,7 @@ class TelephoneNumberTest < Minitest::Test
 
   def test_valid_with_keys_returns_false
     refute TelephoneNumber.valid?("448444156790", "GB", [:fixed_line, :mobile, :toll_free])
-    assert TelephoneNumber.valid?("448444156790", "GB", [:shared_cost])
+    assert TelephoneNumber.valid?("448444156790", "GB", [:premium_rate])
   end
 
   def test_valid_with_invalid_country_returns_false
@@ -40,7 +40,7 @@ class TelephoneNumberTest < Minitest::Test
       number_object.values.each do |number_data|
         number_data.values.each do |number|
           telephone_number = TelephoneNumber.parse(number, country)
-          assert_equal number_data[:national_formatted], telephone_number.national_number
+          assert_equal number_data[:national_formatted], telephone_number.national_number, "number was #{number}"
         end
       end
     end
