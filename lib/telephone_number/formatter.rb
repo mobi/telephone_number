@@ -34,19 +34,15 @@ module TelephoneNumber
     end
 
     def build_national_number(formatted: true)
-      captures = normalized_number.match(number_format.pattern).captures
-
-      formatted_string = format(ruby_format_string(number_format.format), *captures)
-      captures.delete(country.mobile_token)
-
-      if number_format.national_prefix_formatting_rule
-        national_prefix_string = number_format.national_prefix_formatting_rule.dup
-        national_prefix_string.gsub!(/\$NP/, country.national_prefix.to_s)
-        national_prefix_string.gsub!(/\$FG/, captures[0])
-        formatted_string.sub!(captures[0], national_prefix_string)
+      national_prefix_formatting_rule = number_format.national_prefix_formatting_rule
+      formatted_number = if national_prefix_formatting_rule
+        national_prefix_formatting_rule = national_prefix_formatting_rule.sub(/\$NP/, country.national_prefix.to_s).sub(/\$FG/, '\\\1')
+        format = number_format.format.sub(/(\$\d)/, national_prefix_formatting_rule).gsub(/\$/, '\\\\')
+        normalized_number.sub(number_format.pattern, format)
+      else
+        normalized_number.sub(number_format.pattern, number_format.format.gsub(/\$/, '\\\\'))
       end
-
-      formatted ? formatted_string : TelephoneNumber.sanitize(formatted_string)
+      formatted ? formatted_number : TelephoneNumber.sanitize(formatted_number)
     end
 
     def build_e164_number(formatted: true)
@@ -56,9 +52,9 @@ module TelephoneNumber
 
     def build_international_number(formatted: true)
       return original_or_default if !valid? || number_format.nil?
-      captures = normalized_number.match(number_format.pattern).captures
-      key = number_format.intl_format || number_format.format
-      formatted_string = "+#{country.country_code} #{format(ruby_format_string(key), *captures)}"
+      format_to_use = number_format.intl_format || number_format.format
+      formatted_string = normalized_number.sub(number_format.pattern, format_to_use.gsub(/\$/, '\\\\'))
+      formatted_string = "+#{country.country_code} #{formatted_string}"
       formatted ? formatted_string : TelephoneNumber.sanitize(formatted_string)
     end
 
