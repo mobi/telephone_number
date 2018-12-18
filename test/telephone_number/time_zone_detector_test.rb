@@ -4,7 +4,7 @@ module TelephoneNumber
   class TimeZoneDetectorTest < Minitest::Test
     def test_returns_correct_timezone
       assert_equal 'Asia/Dubai', TelephoneNumber.parse('+971529933171').timezone
-      assert_equal 'America/Buenos_Aires', TelephoneNumber.parse('+5491112345678').timezone
+      assert_equal 'America/Buenos_Aires', TelephoneNumber.parse('+542975934825').timezone
       assert_equal 'Australia/Adelaide, Australia/Eucla, Australia/Lord_Howe, Australia/Perth, Australia/Sydney, Indian/Christmas, Indian/Cocos', TelephoneNumber.parse(+61467703037).timezone
       assert_equal 'Europe/Brussels', TelephoneNumber.parse('+32498485960').timezone
       assert_equal 'America/La_Paz', TelephoneNumber.parse('+59178500348').timezone
