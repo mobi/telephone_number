@@ -24,7 +24,7 @@ module TelephoneNumber
 
     def detect_format(number)
       native_format = formats.detect do |format|
-        number =~ Regexp.new("^(#{format.leading_digits})") && number =~ Regexp.new("^(#{format.pattern})$")
+        Regexp.new("^(#{format.leading_digits})").match?(number) && Regexp.new("^(#{format.pattern})$").match?(number)
       end
 
       return native_format if native_format || main_country_for_code
