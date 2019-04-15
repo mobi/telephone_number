@@ -41,7 +41,7 @@ class ModelTest < Minitest::Test
   def test_basic_correctly_validates
     basic_classes = [BasicValidation, CountryValidationWithSymbol, CountryValidationWithString]
     basic_classes.each do |klass|
-      assert klass.new(phone_number: '3175082489').valid?
+      assert klass.new(phone_number: '3175082203').valid?
     end
 
     basic_classes.each do |klass|

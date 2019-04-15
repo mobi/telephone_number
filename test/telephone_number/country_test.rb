@@ -35,7 +35,7 @@ module TelephoneNumber
 
     def test_detect_format_correctly_finds_native_format
       us = Country.find(:us)
-      assert_equal /(\d{3})(\d{3})(\d{4})/, us.detect_format("3175082489").pattern
+      assert_equal /(\d{3})(\d{3})(\d{4})/, us.detect_format("3175082203").pattern
     end
 
     def test_detect_format_correctly_finds_parent_format

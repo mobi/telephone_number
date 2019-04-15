@@ -7,7 +7,7 @@ module TelephoneNumber
     URL =  "https://libphonenumber.appspot.com/phonenumberparser?number=%s&country=%s".freeze
     COUNTRIES = {
                   AE: %w(971529933171 971553006144 971551000291),
-                  AR: %w(111512345678 380151234567 299154104587 01112345678),
+                  AR: %w(299154104587 1143211200),
                   AU: %w(0467703037),
                   BE: %w(32498485960 32477702206 32474095692),
                   BO: %w(59178500348 59178006138 59178006139),
