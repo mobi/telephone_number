@@ -36,7 +36,7 @@ module TelephoneNumber
       path = locale_path.empty? ? geocoding_path(:en) : locale_path
 
       path.sort { |a, b| b <=> a }.detect do |path|
-        normalized_number =~ /^#{File.basename(path, 'dat')}/
+        normalized_number.match?(/^#{File.basename(path, 'dat')}/)
       end
     end
 

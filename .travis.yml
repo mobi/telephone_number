@@ -1,10 +1,9 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.3.6
   - 2.4.3
   - 2.5.3
-  - jruby
+  - jruby-head
 before_install: gem install bundler -v 1.13.7
 env:
   - JRUBY_OPTS="--debug"
