@@ -38,7 +38,7 @@ module TelephoneNumber
     def parse_prefix
       return original_number unless country.national_prefix_for_parsing
       duped = original_number.dup
-      match_object = duped.match(country.national_prefix_for_parsing)
+      match_object = duped.match("^(?:#{country.national_prefix_for_parsing})")
 
       # we need to do the "start_with?" here because we need to make sure it's not finding
       # something in the middle of the number. However, we can't modify the regex to do this
