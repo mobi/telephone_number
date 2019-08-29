@@ -1,6 +1,6 @@
-# This file is generated automatically by TestDataImporter. 
-# Any changes made to this file will be overridden next time test data is generated. 
-# Please edit TestDataImporter if you need to add test cases. 
+# This file is generated automatically by TestDataImporter.
+# Any changes made to this file will be overridden next time test data is generated.
+# Please edit TestDataImporter if you need to add test cases.
 ---
 :AE:
   '0':
@@ -278,15 +278,15 @@
 :HU:
   '0':
     :e164_formatted: "+36709311285"
-    :national_formatted: "(70) 931 1285"
+    :national_formatted: "06 70 931 1285"
     :international_formatted: "+36 70 931 1285"
   '1':
     :e164_formatted: "+36709311279"
-    :national_formatted: "(70) 931 1279"
+    :national_formatted: "06 70 931 1279"
     :international_formatted: "+36 70 931 1279"
   '2':
     :e164_formatted: "+36709311206"
-    :national_formatted: "(70) 931 1206"
+    :national_formatted: "06 70 931 1206"
     :international_formatted: "+36 70 931 1206"
 :IE:
   '0':
@@ -436,12 +436,8 @@
 :MX:
   '0':
     :e164_formatted: "+524423593227"
-    :national_formatted: 01 442 359 3227
+    :national_formatted: 442 359 3227
     :international_formatted: "+52 442 359 3227"
-  '1':
-    :e164_formatted: "+5214423593227"
-    :national_formatted: 044 442 359 3227
-    :international_formatted: "+52 1 442 359 3227"
 :NL:
   '0':
     :e164_formatted: "+31610958780"
