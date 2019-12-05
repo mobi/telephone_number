@@ -20,7 +20,7 @@ module TelephoneNumber
       assert_equal 'Europe/Copenhagen', TelephoneNumber.parse('+4524453744').timezone
       assert_equal 'America/Guayaquil, Pacific/Galapagos', TelephoneNumber.parse('+593992441504').timezone
       assert_equal 'Europe/Bucharest', TelephoneNumber.parse('+37253629280').timezone
-      assert_equal 'Atlantic/Canary, Europe/Madrid', TelephoneNumber.parse('+34606217800').timezone
+      assert_equal 'Europe/Madrid', TelephoneNumber.parse('+34606217800').timezone
       assert_equal 'Europe/Paris', TelephoneNumber.parse('+33607114556').timezone
       assert_equal 'Europe/Guernsey, Europe/Isle_of_Man, Europe/Jersey, Europe/London', TelephoneNumber.parse('+448444156790').timezone
       assert_equal 'Asia/Hong_Kong', TelephoneNumber.parse('+85264636251').timezone
@@ -32,7 +32,7 @@ module TelephoneNumber
       assert_equal 'Asia/Seoul', TelephoneNumber.parse('+821036424812').timezone
       assert_equal 'America/Mexico_City', TelephoneNumber.parse('+524423593227').timezone
       assert_equal 'Europe/Amsterdam', TelephoneNumber.parse('+31610958780').timezone
-      assert_equal 'Arctic/Longyearbyen, Europe/Oslo', TelephoneNumber.parse('+4792272668').timezone
+      assert_equal 'Europe/Oslo', TelephoneNumber.parse('+4792272668').timezone
       assert_equal 'Pacific/Auckland, Pacific/Chatham', TelephoneNumber.parse('+64212715077').timezone
       assert_equal 'America/Lima', TelephoneNumber.parse('+51994156035').timezone
       assert_equal 'Asia/Manila', TelephoneNumber.parse('+639285588185').timezone
