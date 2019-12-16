@@ -9,7 +9,7 @@ module TelephoneNumber
     end
 
     def valid_types
-      @valid_types ||= validate
+      @valid_types ||= generate_valid_types(normalized_number)
     end
 
     def valid?(keys = [])
@@ -23,15 +23,20 @@ module TelephoneNumber
     # basically anything else that uses google data
     def build_normalized_number
       match_result = parse_prefix.match(country.full_general_pattern)
-      match_result ? match_result[:national_num] : original_number
+
+      if match_result && generate_valid_types(match_result[:national_num]).any?
+        match_result[:national_num]
+      else
+        original_number
+      end
     end
 
-    # returns an array of valid types for the normalized number
+    # returns an array of valid types for the given number
     # if array is empty, we can assume that the number is invalid
-    def validate
+    def generate_valid_types(number)
       return [] unless country
       country.validations.select do |validation|
-        normalized_number.match?(Regexp.new("^(#{validation.pattern})$"))
+        number.match?(Regexp.new("^(#{validation.pattern})$"))
       end.map(&:name)
     end
 
