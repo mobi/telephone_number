@@ -6,7 +6,12 @@ class TelephoneNumberValidator < ActiveModel::EachValidator
   end
 
   def message
-    options[:message] || :invalid
+    message_option = options[:message]
+    if message_option.is_a? Proc
+      message_option.call(record)
+    else
+      options[:message] || :invalid
+    end
   end
 
   def country(record)
