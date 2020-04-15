@@ -29,6 +29,9 @@ Or install it yourself as:
 ## Rails Validation
 
 `validates :my_attribute_name, telephone_number: {country: proc{|record| record.country}, types: [:fixed_line, :mobile, etc]}`
+
+#### Customize Message
+
 `validates :my_attribute_name, telephone_number: {country: proc{|record| record.country}, types: [:fixed_line, :mobile, etc], message: proc{|record| "invalid for #{record.country} country"}}`
 
 #### Valid Phone Types
