@@ -2,10 +2,10 @@ class TelephoneNumberValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     valid_types = options.fetch(:types, [])
     args = [value, country(record), valid_types]
-    record.errors.add(attribute, message) if TelephoneNumber.invalid?(*args)
+    record.errors.add(attribute, message(record)) if TelephoneNumber.invalid?(*args)
   end
 
-  def message
+  def message(record)
     message_option = options[:message]
     if message_option.is_a? Proc
       message_option.call(record)
