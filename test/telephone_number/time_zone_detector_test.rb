@@ -5,7 +5,7 @@ module TelephoneNumber
     def test_returns_correct_timezone
       assert_equal 'Asia/Dubai', TelephoneNumber.parse('+971529933171').timezone
       assert_equal 'America/Buenos_Aires', TelephoneNumber.parse('+542975934825').timezone
-      assert_equal 'Australia/Adelaide, Australia/Eucla, Australia/Lord_Howe, Australia/Perth, Australia/Sydney, Indian/Christmas, Indian/Cocos', TelephoneNumber.parse(+61467703037).timezone
+      assert_equal 'Australia/Sydney', TelephoneNumber.parse('+61467703037').timezone
       assert_equal 'Europe/Brussels', TelephoneNumber.parse('+32498485960').timezone
       assert_equal 'America/La_Paz', TelephoneNumber.parse('+59178500348').timezone
       assert_equal 'America/Sao_Paulo', TelephoneNumber.parse('+5511992339376').timezone
@@ -18,7 +18,7 @@ module TelephoneNumber
       assert_equal 'America/Costa_Rica', TelephoneNumber.parse('+50622123456').timezone
       assert_equal 'Europe/Berlin', TelephoneNumber.parse('+4915222503070').timezone
       assert_equal 'Europe/Copenhagen', TelephoneNumber.parse('+4524453744').timezone
-      assert_equal 'America/Guayaquil, Pacific/Galapagos', TelephoneNumber.parse('+593992441504').timezone
+      assert_equal 'America/Guayaquil', TelephoneNumber.parse('+593992441504').timezone
       assert_equal 'Europe/Bucharest', TelephoneNumber.parse('+37253629280').timezone
       assert_equal 'Europe/Madrid', TelephoneNumber.parse('+34606217800').timezone
       assert_equal 'Europe/Paris', TelephoneNumber.parse('+33607114556').timezone
@@ -33,7 +33,7 @@ module TelephoneNumber
       assert_equal 'America/Mexico_City', TelephoneNumber.parse('+524423593227').timezone
       assert_equal 'Europe/Amsterdam', TelephoneNumber.parse('+31610958780').timezone
       assert_equal 'Europe/Oslo', TelephoneNumber.parse('+4792272668').timezone
-      assert_equal 'Pacific/Auckland, Pacific/Chatham', TelephoneNumber.parse('+64212715077').timezone
+      assert_equal 'Pacific/Auckland', TelephoneNumber.parse('+64212715077').timezone
       assert_equal 'America/Lima', TelephoneNumber.parse('+51994156035').timezone
       assert_equal 'Asia/Manila', TelephoneNumber.parse('+639285588185').timezone
       assert_equal 'Europe/Warsaw', TelephoneNumber.parse('+48665666003').timezone
