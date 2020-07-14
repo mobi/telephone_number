@@ -8,7 +8,7 @@ module TelephoneNumber
       master_data = {}
       bin_file_path = "#{File.dirname(file_path)}/#{File.basename(file_path, '.txt')}.dat"
 
-      File.open(file_path, 'r').each do |row|
+      File.open(file_path, 'r:UTF-8').each do |row|
         next if row.strip !~ /^[0-9]/
         number, location = row.split('|')
         master_data[number.strip] = location.strip
