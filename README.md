@@ -26,6 +26,10 @@ Or install it yourself as:
 
     $ gem install telephone_number
 
+## Supported Ruby Versions
+
+This library requires Ruby 2.4 or later.
+
 ## Rails Validation
 
 `validates :my_attribute_name, telephone_number: {country: proc{|record| record.country}, types: [:fixed_line, :mobile, etc]}`
