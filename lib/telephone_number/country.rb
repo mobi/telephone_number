@@ -52,11 +52,24 @@ module TelephoneNumber
     end
 
     def self.load_data
-      data_file = "#{File.dirname(__FILE__)}/../../data/telephone_number_data_file.dat"
-      main_data = Marshal.load(File.binread(data_file))
-      override_data = {}
-      override_data = Marshal.load(File.binread(TelephoneNumber.override_file)) if TelephoneNumber.override_file
-      return main_data.deep_deep_merge!(override_data)
+      data_path = "#{File.dirname(__FILE__)}/../../data/telephone_number_data_file.dat"
+      main_data = Marshal.load(File.binread(data_path))
+      if TelephoneNumber.override_file
+        override_data = Marshal.load(File.binread(TelephoneNumber.override_file))
+        main_data = deep_merge(main_data, override_data)
+      end
+      main_data
+    end
+
+    def self.deep_merge(base_hash, other_hash)
+      other_hash.each do |key, value|
+        base_hash[key] = if base_hash[key]&.is_a?(Hash) && value.is_a?(Hash)
+          deep_merge(base_hash[key], value)
+        else
+          value
+        end
+      end
+      base_hash
     end
 
     def self.all_countries
