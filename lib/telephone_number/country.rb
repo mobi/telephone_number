@@ -17,7 +17,7 @@ module TelephoneNumber
       @national_prefix_for_parsing = Regexp.new(data_hash[:national_prefix_for_parsing]) if data_hash[:national_prefix_for_parsing]
       @national_prefix_transform_rule = data_hash[:national_prefix_transform_rule]
       @validations = data_hash.fetch(:validations, {})
-                              .except(:general_desc, :area_code_optional)
+                              .delete_if { |name, _| name == :general_desc || name == :area_code_optional }
                               .map { |name, data| NumberValidation.new(name, data) }
       @formats = data_hash.fetch(:formats, []).map { |format| NumberFormat.new(format, data_hash[:national_prefix_formatting_rule]) }
     end
