@@ -7,18 +7,18 @@ module TelephoneNumber
     MOBILE_TOKEN_COUNTRIES = { AR: '9' }.freeze
 
     def initialize(data_hash)
+      validations = data_hash.fetch(:validations, {})
       @country_code = data_hash[:country_code]
       @country_id = data_hash[:id]
-      @general_validation = NumberValidation.new(:general_desc, data_hash[:validations][:general_desc]) if data_hash.fetch(:validations, {})[:general_desc]
+      @general_validation = NumberValidation.new(:general_desc, validations[:general_desc]) if validations[:general_desc]
       @international_prefix = Regexp.new(data_hash[:international_prefix]) if data_hash[:international_prefix]
       @main_country_for_code = data_hash[:main_country_for_code] == 'true'
       @mobile_token = MOBILE_TOKEN_COUNTRIES[@country_id.to_sym]
       @national_prefix = data_hash[:national_prefix]
       @national_prefix_for_parsing = Regexp.new(data_hash[:national_prefix_for_parsing]) if data_hash[:national_prefix_for_parsing]
       @national_prefix_transform_rule = data_hash[:national_prefix_transform_rule]
-      @validations = data_hash.fetch(:validations, {})
-                              .delete_if { |name, _| name == :general_desc || name == :area_code_optional }
-                              .map { |name, data| NumberValidation.new(name, data) }
+      @validations = validations.delete_if { |name, _| name == :general_desc || name == :area_code_optional }
+                                .map { |name, data| NumberValidation.new(name, data) }
       @formats = data_hash.fetch(:formats, []).map { |format| NumberFormat.new(format, data_hash[:national_prefix_formatting_rule]) }
     end
 
