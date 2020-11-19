@@ -7,7 +7,7 @@ module TelephoneNumber
     MOBILE_TOKEN_COUNTRIES = { AR: '9' }.freeze
 
     def initialize(data_hash)
-      validations = data_hash.fetch(:validations, {})
+      validations = data_hash.fetch(:validations, {}).dup
       @country_code = data_hash[:country_code]
       @country_id = data_hash[:id]
       @general_validation = NumberValidation.new(:general_desc, validations[:general_desc]) if validations[:general_desc]
@@ -63,7 +63,7 @@ module TelephoneNumber
 
     def self.deep_merge(base_hash, other_hash)
       other_hash.each do |key, value|
-        base_hash[key] = if base_hash[key]&.is_a?(Hash) && value.is_a?(Hash)
+        base_hash[key] = if base_hash[key].is_a?(Hash) && value.is_a?(Hash)
           deep_merge(base_hash[key], value)
         else
           value
