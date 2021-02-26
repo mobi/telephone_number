@@ -5657,23 +5657,61 @@
       <availableFormats>
         <!-- Using format from online yellow pages over format implied in national numbering plan. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[02-9]</leadingDigits>
+          <leadingDigits>
+            [03-9]|
+            2(?:
+              [02-4]|
+              1[023578]
+            )
+          </leadingDigits>
+          <leadingDigits>
+            [03-9]|
+            2(?:
+              [02-4]|
+              1(?:
+                [02357]|
+                80
+              )
+            )
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d)(\d{5})">
+          <leadingDigits>2</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{4})">
+          <leadingDigits>0</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[02-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [02]\d{9}|
+          [02-9]\d{7}
+        </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
-        <possibleLengths national="8"/>
+        <possibleLengths national="8,10"/>
         <exampleNumber>21234567</exampleNumber>
         <nationalNumberPattern>
           (?:
             2(?:
               0[023]|
-              1[02357]|
-              [23][045]|
-              4[03-5]
+              [15]\d{3}|
+              7(?:
+                2(?:
+                  0[23]|
+                  1[2357]|
+                  [23][45]|
+                  4[3-5]
+                )|
+                3(?:
+                  06|
+                  1[69]|
+                  [2-6]7
+                )
+              )
             )|
             3(?:
               0[06]|
@@ -5682,6 +5720,11 @@
               5[09]|
               6[08]
             )
+          )\d{5}|
+          2(?:
+            1[02357]|
+            [23][045]|
+            4[03-5]
           )\d{5}
         </nationalNumberPattern>
       </fixedLine>
@@ -5691,20 +5734,26 @@
            50 has been removed since Warid seems to have stopped operation in Côte d'Ivoire.
            Prefix 73 and 97[0-3] are added based on user reports. -->
       <mobile>
-        <possibleLengths national="8"/>
+        <possibleLengths national="8,10"/>
         <exampleNumber>01234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            2[0-3]80|
-            97[0-3]\d
+            (?:
+              0(?:
+                [15]\d\d|
+                7(?:
+                  [04-8][7-9]|
+                  9[78]
+                )
+              )|
+              [457]\d|
+              6[014-9]|
+              8[4-9]|
+              9[4-8]
+            )\d\d|
+            2[0-3]80
           )\d{4}|
-          (?:
-            0[1-9]|
-            [457]\d|
-            6[014-9]|
-            8[4-9]|
-            95
-          )\d{6}
+          0[1-9]\d{6}
         </nationalNumberPattern>
       </mobile>
     </territory>
