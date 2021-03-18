@@ -5734,7 +5734,7 @@
            50 has been removed since Warid seems to have stopped operation in Côte d'Ivoire.
            Prefix 73 and 97[0-3] are added based on user reports. -->
       <mobile>
-        <possibleLengths national="8,10"/>
+        <possibleLengths national="10"/>
         <exampleNumber>01234567</exampleNumber>
         <nationalNumberPattern>
           (?:
