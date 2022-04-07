@@ -3687,13 +3687,13 @@
             0(?:
               49|
               5[23]|
-              6[56]|
+              6[5-7]|
               9[016-9]
             )|
             4(?:
               4[569]|
               5[4-6]|
-              6[56]|
+              6[5-7]|
               7[0179]
             )|
             5(?:
@@ -3709,7 +3709,7 @@
         <exampleNumber>70123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            0[1267]|
+            0[125-7]|
             5[1-8]|
             [67]\d
           )\d{6}
@@ -4009,12 +4009,17 @@
     <territory id="BJ" countryCode="229" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[25689]</leadingDigits>
+          <leadingDigits>[24-689]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[25689]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [25689]\d|
+            40
+          )\d{6}
+        </nationalNumberPattern>
       </generalDesc>
       <!-- These come from the national numbering plan, but have been widened to include other
            prefixes found in the yellow pages - specifically 21 0. -->
@@ -4039,6 +4044,7 @@
         <exampleNumber>90011234</exampleNumber>
         <nationalNumberPattern>
           (?:
+            40|
             5[1-8]|
             6\d|
             9[013-9]
@@ -9074,7 +9080,7 @@
                   000|
                   (?:
                     19|
-                    [24-7]\d
+                    [2-7]\d
                   )\d
                 )|
                 (?:
@@ -15376,12 +15382,12 @@
               52[35]|
               6(?:
                 0[1-3579]|
-                1[0237-9]|
+                1[02357-9]|
                 [23]\d|
                 40|
                 5[06]|
                 6[2-589]|
-                7[05]|
+                7[0257]|
                 8[04]|
                 9[4-9]
               )|
@@ -24242,7 +24248,10 @@
         <exampleNumber>6201234</exampleNumber>
         <nationalNumberPattern>
           (?:
-            46[0-5]|
+            (?:
+              46|
+              83
+            )[0-5]|
             6[2-4689]0
           )\d{4}|
           (?:
@@ -24532,12 +24541,13 @@
             69(?:
               2\d\d|
               3(?:
-                [06][0-46]|
+                0[0-46]|
                 1[013]|
                 2[0-2]|
                 3[0-39]|
                 4\d|
                 5[0-5]|
+                6[0-6]|
                 7[0-27]|
                 8[0-8]|
                 9[0-479]
@@ -25119,7 +25129,7 @@
           579[01]\d{5}|
           5(?:
             [013-689]\d|
-            7[0-36-8]
+            7[0-35-8]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -25342,7 +25352,8 @@
             9(?:
               00|
               39|
-              44
+              44|
+              9
             )
           </leadingDigits>
           <format>$1-$2</format>
@@ -25581,10 +25592,13 @@
         <nationalNumberPattern>
           649\d{6}|
           9(?:
-            00|
-            39|
-            44
-          )[1-8]\d{3,6}
+            (?:
+              00|
+              39|
+              44
+            )[1-8]\d{3,6}|
+            9[1-59]\d{4}
+          )
         </nationalNumberPattern>
       </premiumRate>
       <sharedCost>
@@ -28623,7 +28637,7 @@
               3[0245]|
               4[023578]|
               58|
-              6[39]|
+              6[349]|
               7[0589]|
               8[04]
             )|
@@ -28765,8 +28779,7 @@
               3[0245]|
               4[023578]|
               58|
-              64|
-              6[39]|
+              6[349]|
               7[0589]|
               8[04]
             )|
