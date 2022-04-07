@@ -689,6 +689,10 @@
     :e164_formatted: "+13175082333"
     :national_formatted: "(317) 508-2333"
     :international_formatted: "+1 317-508-2333"
+  '18':
+    :e164_formatted: "+14643001123"
+    :national_formatted: "(464) 300-1123"
+    :international_formatted: "+1 464-300-1123"
 :VE:
   '0':
     :e164_formatted: "+584149993108"
