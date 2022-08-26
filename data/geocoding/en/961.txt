@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The Libphonenumber Authors
+# Copyright (C) 2021 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-67822|Port Vila, Shefa
-67823|Port Vila, Shefa
-67824|Port Vila, Shefa
-67825|Port Vila, Shefa
-67826|Port Vila, Shefa
-67827|Port Vila, Shefa
-67828|Port Vila, Shefa
-67829|Port Vila, Shefa
-67836|Sanma
-67837|Luganville
-67838|Penama/Torba
-6784|Malampa
-67888|Tafea
+# https://www.itu.int/oth/T0202000077/en
+
+96121|Beirut
+96124|Metn
+96125|Chouf
+96126|North Lebanon
+96127|South Lebanon
+96128|Bekaa
+96129|Jbeil & Keserwan

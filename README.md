@@ -1,4 +1,6 @@
-[![Code Climate](https://codeclimate.com/github/mobi/telephone_number/badges/gpa.svg)](https://codeclimate.com/github/mobi/telephone_number) [![Coverage Status](https://coveralls.io/repos/github/mobi/telephone_number/badge.svg)](https://coveralls.io/github/mobi/telephone_number)
+[![Build Status](https://travis-ci.org/mobi/telephone_number.svg?branch=master)](https://travis-ci.org/mobi/telephone_number)
+[![Code Climate](https://codeclimate.com/github/mobi/telephone_number/badges/gpa.svg)](https://codeclimate.com/github/mobi/telephone_number)
+[![Coverage Status](https://coveralls.io/repos/github/mobi/telephone_number/badge.svg)](https://coveralls.io/github/mobi/telephone_number)
 
 # What is it?
 
@@ -64,7 +66,7 @@ phone_object = TelephoneNumber.parse("3175082237", :us) ==>
   @country=:US,
   @e164_number="13175083348",
   @national_number="3175083348",
-  @original_number="3175083348">    
+  @original_number="3175083348">
 ```
 After that you have the following instance methods available to you.
 
@@ -72,7 +74,7 @@ After that you have the following instance methods available to you.
 
   Returns all types that the number is considered valid for.
 
-  `phone_object.valid_types ==> [:fixed_line, :mobile, :toll_free]`   
+  `phone_object.valid_types ==> [:fixed_line, :mobile, :toll_free]`
 
 - ### `valid?`
 
@@ -117,10 +119,10 @@ After that you have the following instance methods available to you.
   `phone_object.location ==> "Indiana"`
 
   `phone_object.location(:ja) ==> "ソウル特別市"`
-  
+
 - ### `timezone`
 
-  Returns the time zone of the number. 
+  Returns the time zone of the number.
 
   `phone_object.timezone ==> "America/New_York"`
 
