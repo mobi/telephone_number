@@ -1,6 +1,6 @@
-# This file is generated automatically by TestDataImporter.
-# Any changes made to this file will be overridden next time test data is generated.
-# Please edit TestDataImporter if you need to add test cases.
+# This file is generated automatically by TestDataImporter. 
+# Any changes made to this file will be overridden next time test data is generated. 
+# Please edit TestDataImporter if you need to add test cases. 
 ---
 :AE:
   '0':
@@ -167,13 +167,13 @@
     :international_formatted: "+86 374 808 6894"
 :CO:
   '0':
+    :e164_formatted: "+576012345678"
+    :national_formatted: "(601) 2345678"
+    :international_formatted: "+57 601 2345678"
+  '1':
     :e164_formatted: "+573211234567"
     :national_formatted: 321 1234567
     :international_formatted: "+57 321 1234567"
-  '1':
-    :e164_formatted: "+5712345678"
-    :national_formatted: "(1) 2345678"
-    :international_formatted: "+57 1 2345678"
 :CR:
   '0':
     :e164_formatted: "+50622123456"
@@ -689,26 +689,6 @@
     :e164_formatted: "+13175082333"
     :national_formatted: "(317) 508-2333"
     :international_formatted: "+1 317-508-2333"
-  '18':
-    :e164_formatted: "+14643001123"
-    :national_formatted: "(464) 300-1123"
-    :international_formatted: "+1 464-300-1123"
-  '19':
-    :e164_formatted: "+15275931234"
-    :national_formatted: "(527) 593-1234"
-    :international_formatted: "+1 527-593-1234"
-  '20':
-    :e164_formatted: "+15275881234"
-    :national_formatted: "(527) 588-1234"
-    :international_formatted: "+1 527-588-1234"
-  '21':
-    :e164_formatted: "+15274491234"
-    :national_formatted: "(527) 449-1234"
-    :international_formatted: "+1 527-449-1234"
-  '22':
-    :e164_formatted: "+15273131234"
-    :national_formatted: "(527) 313-1234"
-    :international_formatted: "+1 527-313-1234"
 :VE:
   '0':
     :e164_formatted: "+584149993108"

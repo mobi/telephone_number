@@ -18,7 +18,7 @@ module TelephoneNumber
       assert_equal 'Grodno', TelephoneNumber.parse('+375152450911').location # Belarus
       assert_equal 'Ontario', TelephoneNumber.parse('+16135550122').location # Canada
       assert_equal 'Shijiazhuang, Hebei', TelephoneNumber.parse('+8615694876068').location # China
-      assert_equal 'Bogotá', TelephoneNumber.parse('+5712345678').location # Colombia
+      assert_equal 'Bogotá', TelephoneNumber.parse('+576012345678').location # Colombia
       assert_equal 'London', TelephoneNumber.parse('+442076361000').location # UK
       assert_equal 'Agra, Uttar Pradesh', TelephoneNumber.parse('+915622231515').location # India
       assert_equal 'Tokyo', TelephoneNumber.parse('+81312345678').location # Japan
