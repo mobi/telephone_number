@@ -1424,8 +1424,10 @@
 1734|America/New_York
 1737|America/Chicago
 1740|America/New_York
+1742|America/Toronto
 1743|America/New_York
 1747|America/Los_Angeles
+1753|America/Toronto
 1754|America/New_York
 1757|America/New_York
 1758|America/St_Lucia
@@ -1621,6 +1623,7 @@
 1819|America/Toronto
 1820|America/Los_Angeles
 1825|America/Edmonton
+1826|America/New_York
 1828|America/New_York
 1829|America/Santo_Domingo
 1830|America/Chicago
@@ -1992,6 +1995,7 @@
 1939|America/Puerto_Rico
 1940|America/Chicago
 1941|America/New_York
+1943|America/New_York
 1945|America/Chicago
 1947|America/New_York
 1948|America/New_York
@@ -2183,6 +2187,7 @@
 391|Europe/Rome&Europe/Vatican
 393|Europe/Rome&Europe/Vatican
 395|Europe/Rome&Europe/Vatican
+397|Europe/Rome
 398|Europe/Rome&Europe/Vatican
 40|Europe/Bucharest
 41|Europe/Zurich
@@ -3269,6 +3274,11 @@
 97624|Asia/Hovd
 97625|Asia/Ulaanbaatar
 976258|Asia/Choibalsan
+9765|Asia/Ulaanbaatar
+9766|Asia/Ulaanbaatar
+9767|Asia/Ulaanbaatar
+9768|Asia/Ulaanbaatar
+9769|Asia/Ulaanbaatar
 977|Asia/Katmandu
 98|Asia/Tehran
 992|Asia/Dushanbe
