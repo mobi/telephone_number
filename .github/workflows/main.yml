@@ -21,8 +21,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: pull geocoding
-      uses: ankit-tangoe/copy_file_from_libphone_number@main
+    - name: geocoding
+      uses: actions/geocoding@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
