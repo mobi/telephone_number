@@ -1,0 +1,60 @@
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+
+name: ⏫ Copy content to telephone
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: pull geocoding
+      uses: ankit-tangoe/copy_file_from_libphone_number@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_repo: 'google/libphonenumber'
+        source_branch: 'master'
+        source_folder: 'resources/geocoding' # Folder to copy
+        destination_rile: 'data/' # Target file
+        user_email: 'ankit.pandey@tangoe.com'
+        user_name: 'ankit-tangoe'
+        commit_message: "AUTO: Copying posts from libphone_number's to telephone_number's repo"
+        git_server: 'github.com'
+
+#     - name: Push publications
+#       uses: dmnemec/copy_file_to_another_repo_action@main
+#       env:
+#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#       with:
+#         source_file: 'content/publication/' # Folder to copy
+#         destination_repo: 'RealityBending/RealityBending.github.io' # Target repo
+#         destination_folder: 'content/' # Folder where to copy it
+#         user_email: 'dom.makowski@gmail.com'
+#         user_name: 'DominiqueMakowski'
+#         commit_message: "AUTO: Copying publications from Dom's to REBEL's website"
+#         git_server: 'github.com'
+
+#     - name: Publish to RubyGems
+#       run: |
+#         mkdir -p $HOME/.gem
+#         touch $HOME/.gem/credentials
+#         chmod 0600 $HOME/.gem/credentials
+#         printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+#         gem build *.gemspec
+#         gem push *.gem
+#       env:
+#         GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
