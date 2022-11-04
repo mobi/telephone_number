@@ -22,7 +22,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: geocoding
-      uses: actions/geocoding@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
