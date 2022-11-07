@@ -24,19 +24,19 @@ jobs:
         url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
         target: data/geocoding
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.6.0
-        with:
-          committer: ankit-tangoe <noreply@suisei.moe>
-          author: ankit@users.noreply.github.com>
-          commit-message: "feat(sound): Add qwerty"
-          title: "feat(sound): Add 234"
-          body: |
-            This is an automated sound addition PR. Netlify preview should be available soon, and a preview link should be shown.
-            <sub>Having problems? Check your [workflow](https://github.com/suisei-cn/sbtn-assets/blob/master/.github/workflows/auto_pr.yml).</sub>
-          branch: sound/new
-          branch-suffix: "random"
-          labels: new-sound
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3.6.0
+      with:
+        committer: ankit-tangoe <noreply@suisei.moe>
+        author: ankit@users.noreply.github.com>
+        commit-message: "feat(sound): Add qwerty"
+        title: "feat(sound): Add 234"
+        body: |
+          This is an automated sound addition PR. Netlify preview should be available soon, and a preview link should be shown.
+          <sub>Having problems? Check your [workflow](https://github.com/suisei-cn/sbtn-assets/blob/master/.github/workflows/auto_pr.yml).</sub>
+        branch: sound/new
+        branch-suffix: "random"
+        labels: new-sound
 
 
     # - name: Update resources
