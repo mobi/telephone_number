@@ -14,22 +14,24 @@ jobs:
         url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
         file_in_repo: data/telephone_number_data_file.xml
 
+    # - name: Update geocoding
+    #   run: rm -rf .git/COMMIT_EDITMSG && rm -rf -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding && git config user.name "thelastproject/keep-remote-locally-up-to-date" && git config user.email "no-reply@github.com" && git add data/geocoding && git commit -m "Update" && git push
+
     - name: Update geocoding
-      run: curl -L https://github.com/google/libphonenumber/tree/master/resources/geocoding > project.tar.gz && tar -zxf project.tar.gz
+      run: wget -r --no-parent https://github.com/google/libphonenumber/tree/master/resources/geocoding
 
     - name: Push publications
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_file: 'data/geocoding/' # Folder to copy
+        source_file: 'github.com/google/libphonenumber/tree/master/resources/geocoding' # Folder to copy
         destination_repo: 'ankit-tangoe/telephone_number_test' # Target repo
         destination_folder: 'data/' # Folder where to copy it
         user_email: 'ankit.pandey@tangoe.com'
         user_name: 'ankit-tangoe'
         commit_message: "AUTO: Copying publications from Dom's to REBEL's website"
         git_server: 'github.com'
-
     # - uses: suisei-cn/actions-download-file@v1.0.1
     #   id: Update_geocoding  # Remember to give an ID if you need the output filename
     #   name: Update geocodinge
