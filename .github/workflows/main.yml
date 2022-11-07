@@ -6,12 +6,20 @@ jobs:
     - name: Checkout repo
       id: checkout
       uses: actions/checkout@v2
-    - name: Update file
-      id: update_file
+
+    - name: Update PhoneNumberMetadata
+      id: update_PhoneNumberMetadata
       uses: TheLastProject/keep-remote-file-locally-up-to-date-action@v1
       with:
         url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
         file_in_repo: data/telephone_number_data_file.xml
+
+    - name: Update geocoding
+      id: update_geocoding
+      uses: TheLastProject/keep-remote-file-locally-up-to-date-action@v1
+      with:
+        url: https://github.com/google/libphonenumber/tree/master/resources/geocoding/*
+        file_in_repo: data/geocoding/*
 on:
   schedule:
     - cron: '0 0 * * *'
