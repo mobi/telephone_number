@@ -1,3 +1,20 @@
+name: Automated metadata update
+
+
+on:
+  # schedule:
+  #   - cron: '0 0 * * *'
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    # inputs:
+    #   name:
+    #     # Friendly description to be shown in the UI instead of 'name'
+    #     description: 'Get latest data'
+    #     # Default value if no value is explicitly provided
+    #     default: 'fetch'
+    #     # Input has to be provided for the workflow to run
+    #     required: true
+
 jobs:
   keep_file_updated:
     runs-on: ubuntu-latest
@@ -13,6 +30,13 @@ jobs:
       with:
         url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
         file_in_repo: data/telephone_number_data_file.xml
+
+    - name: Update timezones
+      id: update_timezones
+      uses: TheLastProject/keep-remote-file-locally-up-to-date-action@v1
+      with:
+        url: https://github.com/google/libphonenumber/blob/master/resources/timezones/map_data.txt
+        file_in_repo: data/timezones/map_data.txt    
 
     - name: Download geocoding
       run: wget -r --no-parent https://github.com/google/libphonenumber/tree/master/resources/geocoding
@@ -31,71 +55,22 @@ jobs:
         commit_message: "AUTO: Copying geocodings from google's libphonenumber"
         git_server: 'github.com'
 
-    - name: Download timezones
-      run: wget -r --no-parent https://github.com/google/libphonenumber/tree/master/resources/timezones
+    # - name: Download timezones
+    #   run: wget -r --no-parent https://github.com/google/libphonenumber/tree/master/resources/timezones
 
-    - name: Push timezones
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_file: 'github.com/google/libphonenumber/tree/master/resources/timezones' # Folder to copy
-        destination_repo: 'ankit-tangoe/telephone_number_test' # Target repo
-        destination_branch: 'master' # Target repo
-        destination_folder: 'data/' # Folder where to copy it
-        user_email: 'ankit.pandey@tangoe.com'
-        user_name: 'ankit-tangoe'
-        commit_message: "AUTO: Copying timezones from google's libphonenumber"
-        git_server: 'github.com'
-on:
-  # schedule:
-  #   - cron: '0 0 * * *'
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    # inputs:
-    #   name:
-    #     # Friendly description to be shown in the UI instead of 'name'
-    #     description: 'Get latest data'
-    #     # Default value if no value is explicitly provided
-    #     default: 'fetch'
-    #     # Input has to be provided for the workflow to run
-    #     required: true
-
-# name:  Copy content to telephone
-
-# jobs:
-#   copy-file:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v2
-
-#     - name: geocoding
-#       uses: dmnemec/copy_file_to_another_repo_action@main
-#       env:
-#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-#       with:
-#         source_repo: 'google/libphonenumber'
-#         source_branch: 'master'
-#         source_folder: 'resources/geocoding' # Folder to copy
-#         destination_rile: 'data/' # Target file
-#         user_email: 'ankit.pandey@tangoe.com'
-#         user_name: 'ankit-tangoe'
-#         commit_message: "AUTO: Copying posts from libphone_number's to telephone_number's repo"
-#         git_server: 'github.com'
-
-#     - name: Push publications
-#       uses: dmnemec/copy_file_to_another_repo_action@main
-#       env:
-#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-#       with:
-#         source_file: 'content/publication/' # Folder to copy
-#         destination_repo: 'RealityBending/RealityBending.github.io' # Target repo
-#         destination_folder: 'content/' # Folder where to copy it
-#         user_email: 'dom.makowski@gmail.com'
-#         user_name: 'DominiqueMakowski'
-#         commit_message: "AUTO: Copying publications from Dom's to REBEL's website"
-#         git_server: 'github.com'
+    # - name: Push timezones
+    #   uses: dmnemec/copy_file_to_another_repo_action@main
+    #   env:
+    #     API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+    #   with:
+    #     source_file: 'github.com/google/libphonenumber/tree/master/resources/timezones' # Folder to copy
+    #     destination_repo: 'ankit-tangoe/telephone_number_test' # Target repo
+    #     destination_branch: 'master' # Target repo
+    #     destination_folder: 'data/' # Folder where to copy it
+    #     user_email: 'ankit.pandey@tangoe.com'
+    #     user_name: 'ankit-tangoe'
+    #     commit_message: "AUTO: Copying timezones from google's libphonenumber"
+    #     git_server: 'github.com'
 
 #     - name: Publish to RubyGems
 #       run: |
