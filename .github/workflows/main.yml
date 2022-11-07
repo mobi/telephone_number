@@ -10,8 +10,8 @@ jobs:
       id: update_file
       uses: TheLastProject/keep-remote-file-locally-up-to-date-action@v1
       with:
-        url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
-        file_in_repo: data/geocoding
+        url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
+        file_in_repo: data/telephone_number_data_file.xml
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -20,9 +20,9 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Get latest data'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'fetch'
         # Input has to be provided for the workflow to run
         required: true
 
