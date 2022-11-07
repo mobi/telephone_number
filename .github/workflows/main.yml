@@ -14,13 +14,10 @@ jobs:
         url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
         file_in_repo: data/telephone_number_data_file.xml
 
-    # - name: Update geocoding
-    #   run: rm -rf .git/COMMIT_EDITMSG && rm -rf -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding && git config user.name "thelastproject/keep-remote-locally-up-to-date" && git config user.email "no-reply@github.com" && git add data/geocoding && git commit -m "Update" && git push
-
-    - name: Update geocoding
+    - name: Download geocoding
       run: wget -r --no-parent https://github.com/google/libphonenumber/tree/master/resources/geocoding
 
-    - name: Push publications
+    - name: Push geocoding
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -31,50 +28,38 @@ jobs:
         destination_folder: 'data/' # Folder where to copy it
         user_email: 'ankit.pandey@tangoe.com'
         user_name: 'ankit-tangoe'
-        commit_message: "AUTO: Copying publications from Dom's to REBEL's website"
+        commit_message: "AUTO: Copying geocodings from google's libphonenumber"
         git_server: 'github.com'
-    # - uses: suisei-cn/actions-download-file@v1.0.1
-    #   id: Update_geocoding  # Remember to give an ID if you need the output filename
-    #   name: Update geocodinge
-    #   with:
-    #     url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
-    #     target: data/geocoding
 
-    # - name: Create Pull Request
-    #   uses: peter-evans/create-pull-request@v3.6.0
-    #   with:
-    #     committer: ankit-tangoe <ankit.pandey@tangoe.com>
-    #     author: ankit.pandey@tangoe.com
-    #     commit-message: "feat(sound): Add qwerty"
-    #     title: "feat(sound): Add 234"
-    #     body: |
-    #       This is an automated sound addition PR. Netlify preview should be available soon, and a preview link should be shown.
-    #       <sub>Having problems? Check your [workflow](https://github.com/suisei-cn/sbtn-assets/blob/master/.github/workflows/auto_pr.yml).</sub>
-    #     branch: sound/new
-    #     branch-suffix: "random"
-    #     labels: new-sound
+    - name: Download timezones
+      run: wget -r --no-parent https://github.com/google/libphonenumber/tree/master/resources/timezones
 
-
-    # - name: Update resources
-    #   uses: test-room-7/action-update-file@v1
-    #   with:
-    #       # Include all JS files from the `dist` directory
-    #       file-path: data/*
-    #       commit-msg: Update resources
-    #       github-token: ${{ secrets.GITHUB_TOKEN }} 
+    - name: Push timezones
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'github.com/google/libphonenumber/tree/master/resources/timezones' # Folder to copy
+        destination_repo: 'ankit-tangoe/telephone_number_test' # Target repo
+        destination_branch: 'master' # Target repo
+        destination_folder: 'data/' # Folder where to copy it
+        user_email: 'ankit.pandey@tangoe.com'
+        user_name: 'ankit-tangoe'
+        commit_message: "AUTO: Copying timezones from google's libphonenumber"
+        git_server: 'github.com'
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
   workflow_dispatch:
     # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Get latest data'
-        # Default value if no value is explicitly provided
-        default: 'fetch'
-        # Input has to be provided for the workflow to run
-        required: true
+    # inputs:
+    #   name:
+    #     # Friendly description to be shown in the UI instead of 'name'
+    #     description: 'Get latest data'
+    #     # Default value if no value is explicitly provided
+    #     default: 'fetch'
+    #     # Input has to be provided for the workflow to run
+    #     required: true
 
 # name:  Copy content to telephone
 
