@@ -70,7 +70,7 @@
 
     
 
-  <meta name="request-id" content="0742:2639:3EB221:60AF17:636922F7" data-pjax-transient="true"/><meta name="html-safe-nonce" content="d15b11ae09f757c3f627b90f8ce70ee98a4ddba9278679083d5a4a1f9db0cf79" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9nb29nbGUvbGlicGhvbmVudW1iZXIvdHJlZS9tYXN0ZXIvcmVzb3VyY2VzL2dlb2NvZGluZyIsInJlcXVlc3RfaWQiOiIwNzQyOjI2Mzk6M0VCMjIxOjYwQUYxNzo2MzY5MjJGNyIsInZpc2l0b3JfaWQiOiIyMDg2MzM1NTc3NTA0NDI0Njg5IiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="892c2e887268b4d1a407399d232e6aafdbf8184fa3edbe66cc6b1c1b9c64ee91" data-pjax-transient="true"/>
+  <meta name="request-id" content="0401:0E56:50E3D7:7C552B:63692375" data-pjax-transient="true"/><meta name="html-safe-nonce" content="31d93b0a4b721f9cc9f5f095d008b196f885138c371c7c61ce78a4e0e9d72b00" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9nb29nbGUvbGlicGhvbmVudW1iZXIvdHJlZS9tYXN0ZXIvcmVzb3VyY2VzL2dlb2NvZGluZyIsInJlcXVlc3RfaWQiOiIwNDAxOjBFNTY6NTBFM0Q3OjdDNTUyQjo2MzY5MjM3NSIsInZpc2l0b3JfaWQiOiIyMDA1ODk4NTcwOTkxNDc3NjE1IiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="ab1431c5d1da756abf8b84c11775679fa251e35053ecdf62d97fef0abaf4d149" data-pjax-transient="true"/>
 
     <meta name="hovercard-subject-tag" content="repository:27500243" data-turbo-transient>
 
@@ -560,7 +560,7 @@
           spellcheck="false"
           autocomplete="off"
         >
-        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="c6iXbqLe5Bg4OT5StblYoUtqna+uyRHPA8fEL0z5GXYjoezO4Kq5Mt8EKBty4G5tlprvZfOezTIIlGmcywc2AA==" />
+        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="xTeTtw0ExAy6oxroylDQH9yEuDXHovbZmD7Zb9GIavGyWUMBVjZxkJYflwDzf/z6bBBt56gpSRx59jPTAx6FQw==" />
         <input type="hidden" class="js-site-search-type-field" name="type" >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
 
