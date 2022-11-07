@@ -14,8 +14,8 @@ jobs:
         url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
         file_in_repo: data/telephone_number_data_file.xml
 
-    # - name: Update geocoding
-    #   run: rm -r -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding
+    - name: Update geocoding
+      run: rm -rf -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding
 
     # - name: Update resources
     #   uses: test-room-7/action-update-file@v1
@@ -25,12 +25,12 @@ jobs:
     #       commit-msg: Update resources
     #       github-token: ${{ secrets.GITHUB_TOKEN }} 
 
-    - uses: suisei-cn/actions-download-file@v1.0.1
-      id: Update_geocoding  # Remember to give an ID if you need the output filename
-      name: Update geocodinge
-      with:
-        url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
-        target: data/geocoding
+    # - uses: suisei-cn/actions-download-file@v1.0.1
+    #   id: Update_geocoding  # Remember to give an ID if you need the output filename
+    #   name: Update geocodinge
+    #   with:
+    #     url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
+    #     target: data/geocoding
 on:
   schedule:
     - cron: '0 0 * * *'
