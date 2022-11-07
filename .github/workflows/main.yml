@@ -30,7 +30,7 @@ jobs:
       name: Update geocodinge
       with:
         url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
-        target: data
+        target: data/geocoding
 on:
   schedule:
     - cron: '0 0 * * *'
