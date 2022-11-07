@@ -17,20 +17,35 @@ jobs:
     - name: Update geocoding
       run: rm -rf -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding && git add -A
 
-    # - uses: suisei-cn/actions-download-file@v1.0.1
-    #   id: Update_geocoding  # Remember to give an ID if you need the output filename
-    #   name: Update geocodinge
-    #   with:
-    #     url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
-    #     target: data/geocoding
-
-    - name: Update resources
-      uses: test-room-7/action-update-file@v1
+    - uses: suisei-cn/actions-download-file@v1.0.1
+      id: Update_geocoding  # Remember to give an ID if you need the output filename
+      name: Update geocodinge
       with:
-          # Include all JS files from the `dist` directory
-          file-path: data/*
-          commit-msg: Update resources
-          github-token: ${{ secrets.GITHUB_TOKEN }} 
+        url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
+        target: data/geocoding
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.6.0
+        with:
+          committer: ankit-tangoe <noreply@suisei.moe>
+          author: ankit@users.noreply.github.com>
+          commit-message: "feat(sound): Add qwerty"
+          title: "feat(sound): Add 234"
+          body: |
+            This is an automated sound addition PR. Netlify preview should be available soon, and a preview link should be shown.
+            <sub>Having problems? Check your [workflow](https://github.com/suisei-cn/sbtn-assets/blob/master/.github/workflows/auto_pr.yml).</sub>
+          branch: sound/new
+          branch-suffix: "random"
+          labels: new-sound
+
+
+    # - name: Update resources
+    #   uses: test-room-7/action-update-file@v1
+    #   with:
+    #       # Include all JS files from the `dist` directory
+    #       file-path: data/*
+    #       commit-msg: Update resources
+    #       github-token: ${{ secrets.GITHUB_TOKEN }} 
 on:
   schedule:
     - cron: '0 0 * * *'
