@@ -27,6 +27,7 @@ jobs:
       with:
         source_file: 'github.com/google/libphonenumber/tree/master/resources/geocoding' # Folder to copy
         destination_repo: 'ankit-tangoe/telephone_number_test' # Target repo
+        destination_branch: 'master' # Target repo
         destination_folder: 'data/' # Folder where to copy it
         user_email: 'ankit.pandey@tangoe.com'
         user_name: 'ankit-tangoe'
