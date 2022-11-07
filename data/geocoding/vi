@@ -70,7 +70,7 @@
 
     
 
-  <meta name="request-id" content="0667:1114:C7AF9:EA00D:63691CC8" data-pjax-transient="true"/><meta name="html-safe-nonce" content="f7f3a9f4203ad3dc9625b20578415f74a019d1aa3b3eb0021b673050ee54329a" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9nb29nbGUvbGlicGhvbmVudW1iZXIvdHJlZS9tYXN0ZXIvcmVzb3VyY2VzL2dlb2NvZGluZyIsInJlcXVlc3RfaWQiOiIwNjY3OjExMTQ6QzdBRjk6RUEwMEQ6NjM2OTFDQzgiLCJ2aXNpdG9yX2lkIjoiNTA1NDkwNTI5MDQ2NTAyNTIwNCIsInJlZ2lvbl9lZGdlIjoiY2VudHJhbGluZGlhIiwicmVnaW9uX3JlbmRlciI6ImNlbnRyYWxpbmRpYSJ9" data-pjax-transient="true"/><meta name="visitor-hmac" content="0b98818173a44268f6ced8c23d04b00b4ec8daf08f8d26751be02315f9b70b8a" data-pjax-transient="true"/>
+  <meta name="request-id" content="07C1:24C0:494452:708632:63691FE6" data-pjax-transient="true"/><meta name="html-safe-nonce" content="33dc5b704cabdcc2050ae6467a8b611be3814d98780537fa9fb6e84c68e40c71" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9nb29nbGUvbGlicGhvbmVudW1iZXIvdHJlZS9tYXN0ZXIvcmVzb3VyY2VzL2dlb2NvZGluZyIsInJlcXVlc3RfaWQiOiIwN0MxOjI0QzA6NDk0NDUyOjcwODYzMjo2MzY5MUZFNiIsInZpc2l0b3JfaWQiOiI1MTMzMzQ5ODk2MDA5MDk3MTg0IiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="ea46f4a8e11f148ec050e6dfc58cc61910c3cddd655ced9caffdefa04c81e2f3" data-pjax-transient="true"/>
 
     <meta name="hovercard-subject-tag" content="repository:27500243" data-turbo-transient>
 
@@ -560,7 +560,7 @@
           spellcheck="false"
           autocomplete="off"
         >
-        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="g7BYZsPupzGmcR6U+YWtW0/wMj/qa2zEOCwL2aM+UJD3qx4n/NXPfI7+K4vWAH3Wq0HL1Sz+OND43tLYefB51A==" />
+        <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="jH/SiUfSY5qmRGd2dfuBz2aq7W/62de8+SNgTtd0y7sOsVuudHkkdCCwBZK/oXkBrAm29NRQrngR100xMk4RMA==" />
         <input type="hidden" class="js-site-search-type-field" name="type" >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
 
