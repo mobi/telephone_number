@@ -16,6 +16,14 @@ jobs:
 
     - name: Update geocoding
       run: rm -r -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding
+
+    - name: Update resources
+      uses: test-room-7/action-update-file@v1
+      with:
+          # Include all JS files from the `dist` directory
+          file-path: data/*
+          commit-msg: Update resources
+          github-token: ${{ secrets.GITHUB_TOKEN }}      
 on:
   schedule:
     - cron: '0 0 * * *'
