@@ -1,3 +1,17 @@
+jobs:
+  keep_file_updated:
+    runs-on: ubuntu-latest
+    name: Keep file updated
+    steps:
+    - name: Checkout repo
+      id: checkout
+      uses: actions/checkout@v2
+    - name: Update file
+      id: update_file
+      uses: TheLastProject/keep-remote-file-locally-up-to-date-action@v1
+      with:
+        url: https://github.com/google/libphonenumber/tree/master/resources/geocoding
+        file_in_repo: data/geocoding
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -12,28 +26,28 @@ on:
         # Input has to be provided for the workflow to run
         required: true
 
-name: ⏫ Copy content to telephone
+# name:  Copy content to telephone
 
-jobs:
-  copy-file:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+# jobs:
+#   copy-file:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: geocoding
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_repo: 'google/libphonenumber'
-        source_branch: 'master'
-        source_folder: 'resources/geocoding' # Folder to copy
-        destination_rile: 'data/' # Target file
-        user_email: 'ankit.pandey@tangoe.com'
-        user_name: 'ankit-tangoe'
-        commit_message: "AUTO: Copying posts from libphone_number's to telephone_number's repo"
-        git_server: 'github.com'
+#     - name: geocoding
+#       uses: dmnemec/copy_file_to_another_repo_action@main
+#       env:
+#         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#       with:
+#         source_repo: 'google/libphonenumber'
+#         source_branch: 'master'
+#         source_folder: 'resources/geocoding' # Folder to copy
+#         destination_rile: 'data/' # Target file
+#         user_email: 'ankit.pandey@tangoe.com'
+#         user_name: 'ankit-tangoe'
+#         commit_message: "AUTO: Copying posts from libphone_number's to telephone_number's repo"
+#         git_server: 'github.com'
 
 #     - name: Push publications
 #       uses: dmnemec/copy_file_to_another_repo_action@main
