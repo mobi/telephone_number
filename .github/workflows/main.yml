@@ -14,8 +14,8 @@ jobs:
         url: https://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml
         file_in_repo: data/telephone_number_data_file.xml
 
-    - name: Update geocoding
-      run: rm -rf -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding && git add -A
+    # - name: Update geocoding
+    #   run: rm -rf -v data/geocoding && wget https://github.com/google/libphonenumber/tree/master/resources/geocoding -O data/geocoding && git add -A
 
     - uses: suisei-cn/actions-download-file@v1.0.1
       id: Update_geocoding  # Remember to give an ID if you need the output filename
