@@ -27,8 +27,8 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.6.0
       with:
-        committer: ankit-tangoe <noreply@suisei.moe>
-        author: ankit@users.noreply.github.com>
+        committer: ankit-tangoe <ankit.pandey@tangoe.com>
+        author: ankit.pandey@tangoe.com
         commit-message: "feat(sound): Add qwerty"
         title: "feat(sound): Add 234"
         body: |
