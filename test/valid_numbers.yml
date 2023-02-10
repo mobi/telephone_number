@@ -690,9 +690,9 @@
     :national_formatted: "(317) 508-2333"
     :international_formatted: "+1 317-508-2333"
   '18':
-    :e164_formatted: "+13502500020"
-    :national_formatted: "(350) 250-0020"
-    :international_formatted: "+1 350-250-0020"
+    :e164_formatted: "+13502341234"
+    :national_formatted: "(350) 234-1234"
+    :international_formatted: "+1 350-234-1234"
   '19':
     :e164_formatted: "+13502523420"
     :national_formatted: "(350) 252-3420"
