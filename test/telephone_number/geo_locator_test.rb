@@ -23,6 +23,7 @@ module TelephoneNumber
       assert_equal 'Agra, Uttar Pradesh', TelephoneNumber.parse('+915622231515').location # India
       assert_equal 'Tokyo', TelephoneNumber.parse('+81312345678').location # Japan
       assert_equal 'Queretaro', TelephoneNumber.parse('+524423593227').location # Mexico
+      assert_equal 'California', TelephoneNumber.parse('+13502341234').location # US
     end
 
     def test_returns_correct_locale
