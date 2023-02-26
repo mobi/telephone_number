@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project are documented here.
 
+## v1.4.19 - 2023-02-26
+* Bring data up to date with [upstream](https://github.com/google/libphonenumber/releases/tag/v8.13.6).
+
 ## v1.4.19 - 2023-02-08
 * Bring data up to date with [upstream](https://github.com/google/libphonenumber/releases/tag/v8.13.5).
 
