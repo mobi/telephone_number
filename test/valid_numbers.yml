@@ -701,6 +701,14 @@
     :e164_formatted: "+13502504620"
     :national_formatted: "(350) 250-4620"
     :international_formatted: "+1 350-250-4620"
+  '21':
+    :e164_formatted: "+15292500143"
+    :national_formatted: "(529) 250-0143"
+    :international_formatted: "+1 529-250-0143"
+  '22':
+    :e164_formatted: "+15292520412"
+    :national_formatted: "(529) 252-0412"
+    :international_formatted: "+1 529-252-0412"
 :VE:
   '0':
     :e164_formatted: "+584149993108"
