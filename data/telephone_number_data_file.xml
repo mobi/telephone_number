@@ -30278,7 +30278,7 @@
         <possibleLengths national="10"/>
         <exampleNumber>2101234567</exampleNumber>
         <nationalNumberPattern>
-          2(?:
+          [1-2](?:
             0[3-9]|
             1[0-689]|
             2[0-25-9]|
