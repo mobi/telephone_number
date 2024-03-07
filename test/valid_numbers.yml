@@ -462,16 +462,16 @@
 :NO:
   '0':
     :e164_formatted: "+4792272668"
-    :national_formatted: 922 72 668
-    :international_formatted: "+47 922 72 668"
+    :national_formatted: 92 27 26 68
+    :international_formatted: "+47 92 27 26 68"
   '1':
     :e164_formatted: "+4797065876"
-    :national_formatted: 970 65 876
-    :international_formatted: "+47 970 65 876"
+    :national_formatted: 97 06 58 76
+    :international_formatted: "+47 97 06 58 76"
   '2':
     :e164_formatted: "+4792466013"
-    :national_formatted: 924 66 013
-    :international_formatted: "+47 924 66 013"
+    :national_formatted: 92 46 60 13
+    :international_formatted: "+47 92 46 60 13"
 :NZ:
   '0':
     :e164_formatted: "+64212715077"

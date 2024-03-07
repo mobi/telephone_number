@@ -298,6 +298,7 @@
 52767|Guerrero
 52768|Veracruz
 52769|Morelos
+52770|Cuernavaca/Emiliano Zapata/Temixco/Xochitepec/Jiutepec
 52771|Pachuca/Real del Monte, HGO
 52772|Actopan, HGO
 52773|Hidalgo
@@ -342,6 +343,7 @@
 52867|Nuevo León/Tamaulipas
 52868|Tamaulipas
 52869|Cuatro Ciénegas/San Buenaventura, COAH
+52870|Coahuila/Durango
 52871|Coahuila
 52872|Coahuila/Durango
 52873|Nuevo León
