@@ -442,10 +442,7 @@
     :e164_formatted: "+524423593227"
     :national_formatted: 442 359 3227
     :international_formatted: "+52 442 359 3227"
-  '1':
-    :e164_formatted: "+524423593227"
-    :national_formatted: 442 359 3227
-    :international_formatted: "+52 442 359 3227"
+  '1': {}
 :NL:
   '0':
     :e164_formatted: "+31610958780"
