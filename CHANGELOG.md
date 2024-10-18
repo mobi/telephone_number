@@ -1,4 +1,4 @@
-	# Changelog
+# Changelog
 All notable changes to this project are documented here.
 
 ## v1.4.22 - 2024-10-18
