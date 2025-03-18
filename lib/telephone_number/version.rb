@@ -1,3 +1,3 @@
 module TelephoneNumber
-  VERSION = "1.4.22"
+  VERSION = "1.4.23"
 end
