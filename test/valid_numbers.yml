@@ -574,6 +574,10 @@
     :e164_formatted: "+6596924755"
     :national_formatted: 9692 4755
     :international_formatted: "+65 9692 4755"
+  '1':
+    :e164_formatted: "+6561234567"
+    :national_formatted: 6123 4567
+    :international_formatted: "+65 6123 4567"
 :TR:
   '0':
     :e164_formatted: "+905497728782"
@@ -706,6 +710,10 @@
     :e164_formatted: "+15292520412"
     :national_formatted: "(529) 252-0412"
     :international_formatted: "+1 529-252-0412"
+  '23':
+    :e164_formatted: "+18555559815"
+    :national_formatted: "(855) 555-9815"
+    :international_formatted: "+1 855-555-9815"
 :VE:
   '0':
     :e164_formatted: "+584149993108"
@@ -732,3 +740,8 @@
     :e164_formatted: "+27828840632"
     :national_formatted: '082 884 0632'
     :international_formatted: "+27 82 884 0632"
+:ZM:
+  '0':
+    :e164_formatted: "+260971234567"
+    :national_formatted: '097 1234567'
+    :international_formatted: "+260 97 1234567"
