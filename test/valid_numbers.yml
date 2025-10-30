@@ -118,6 +118,10 @@
     :e164_formatted: "+14169158200"
     :national_formatted: "(416) 915-8200"
     :international_formatted: "+1 416-915-8200"
+  '8':
+    :e164_formatted: "+19424440337"
+    :national_formatted: "(942) 444-0337"
+    :international_formatted: "+1 942-444-0337"
 :CH:
   '0':
     :e164_formatted: "+41794173875"
