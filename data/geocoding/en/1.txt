@@ -3384,6 +3384,7 @@
 1256971|Huntsville, AL
 1256974|Moulton, AL
 1256997|Fort Payne, AL
+1257|British Colombia
 1260|Indiana
 1260244|Columbia City, IN
 1260248|Columbia City, IN
@@ -6947,6 +6948,7 @@
 1323971|Los Angeles, CA
 1323980|Los Angeles, CA
 1323982|Los Angeles, CA
+1324|Florida
 1325|Texas
 1325223|San Angelo, TX
 1325224|San Angelo, TX
@@ -11222,7 +11224,7 @@
 1435896|Richfield, UT
 1435946|Garden City, UT
 1435986|St. George, UT
-1437|Ontario
+1437|Toronto
 1438|Quebec
 1438380|Montreal, QC
 1440|Ohio
@@ -19386,6 +19388,7 @@
 1682647|Fort Worth, TX
 1682885|Fort Worth, TX
 1683|Ontario
+1686|Virginia
 1689|Florida
 1701|North Dakota
 1701221|Bismarck, ND
@@ -22771,6 +22774,7 @@
 1742|Ontario
 1743|North Carolina
 1747|California
+1748|Colorado
 1753|Ontario
 1754|Florida
 1757|Virginia
@@ -26080,6 +26084,7 @@
 1819985|Thurso, QC
 1819986|Gatineau, QC
 1820|California
+1821|South Carolina
 1825|Alberta
 1826|Virginia
 1828|North Carolina
@@ -32131,6 +32136,7 @@
 1973992|Livingston, NJ
 1973993|Morristown, NJ
 1973994|Livingston, NJ
+1975|Missouri
 1978|Massachusetts
 1978208|Lawrence, MA
 1978232|Beverly, MA
