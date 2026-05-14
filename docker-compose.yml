@@ -1,0 +1,13 @@
+services:
+  ruby:
+    build: .
+    platform: linux/amd64
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    working_dir: /app
+    stdin_open: true
+    tty: true
+
+volumes:
+  bundle:
