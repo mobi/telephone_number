@@ -324,8 +324,8 @@
     :international_formatted: "+91 22 2481 8000"
   '5':
     :e164_formatted: "+917462223999"
-    :national_formatted: 07462 223 999
-    :international_formatted: "+91 7462 223 999"
+    :national_formatted: 074622 23999
+    :international_formatted: "+91 74622 23999"
   '6':
     :e164_formatted: "+912266653366"
     :national_formatted: 022 6665 3366
@@ -376,8 +376,8 @@
     :international_formatted: "+91 22 2481 8000"
   '18':
     :e164_formatted: "+917462223999"
-    :national_formatted: 07462 223 999
-    :international_formatted: "+91 7462 223 999"
+    :national_formatted: 074622 23999
+    :international_formatted: "+91 74622 23999"
   '19':
     :e164_formatted: "+912266653366"
     :national_formatted: 022 6665 3366
