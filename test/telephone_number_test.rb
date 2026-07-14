@@ -14,6 +14,14 @@ class TelephoneNumberTest < Minitest::Test
     assert TelephoneNumber.valid?("448444156790", "GB", [:premium_rate])
   end
 
+  def test_valid_jp_060_mobile_numbers
+    # Japan's numbering plan was revised in December 2024 to make the 060
+    # prefix assignable to mobile carriers, with service expected to start
+    # by early 2027.
+    assert TelephoneNumber.valid?("06021234567", "JP", [:mobile])
+    assert TelephoneNumber.valid?("06090123456", "JP", [:mobile])
+  end
+
   def test_valid_with_invalid_country_returns_false
     refute TelephoneNumber.valid?("448444156790", "NOTREAL")
     assert TelephoneNumber.invalid?("448444156790", "NOTREAL")

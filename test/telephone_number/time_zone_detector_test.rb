@@ -25,7 +25,7 @@ module TelephoneNumber
       assert_equal 'Europe/Guernsey, Europe/Isle_of_Man, Europe/London', TelephoneNumber.parse('+448444156790').timezone
       assert_equal 'Asia/Hong_Kong', TelephoneNumber.parse('+85264636251').timezone
       assert_equal 'Europe/Budapest', TelephoneNumber.parse('+36709311285').timezone
-      assert_equal 'Europe/Dublin', TelephoneNumber.parse('+353863634875').timezone
+      assert_equal 'Europe/Guernsey, Europe/Isle_of_Man, Europe/London', TelephoneNumber.parse('+353863634875').timezone
       assert_equal 'Asia/Calcutta', TelephoneNumber.parse('+915622231515').timezone
       assert_equal 'Europe/Rome, Europe/Vatican', TelephoneNumber.parse('+393478258998').timezone
       assert_equal 'Asia/Tokyo', TelephoneNumber.parse('+81312345678').timezone
