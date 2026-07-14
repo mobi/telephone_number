@@ -1,12 +1,9 @@
 require 'coveralls'
 require 'simplecov'
 
-# SimpleCov.start 'test_frameworks'
-SimpleCov.start do
+Coveralls.wear! do
   add_filter "/test/"
 end
-
-Coveralls.wear!
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'active_model'
